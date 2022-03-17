@@ -1,0 +1,20 @@
+{
+    "myexecutor_1": {
+        "POOL": "gcpclustergen2",
+        "REMOTE_CONDA_ENV": "parsl_py39",
+        "REMOTE_CONDA_DIR": "/contrib/Alvaro.Vidal/miniconda3",
+        "RUN_DIR": "/contrib/Alvaro.Vidal/tmp",
+        "WORKER_LOGDIR_ROOT": "/contrib/Alvaro.Vidal/tmp",
+        "SSH_CHANNEL_SCRIPT_DIR": "/contrib/Alvaro.Vidal/tmp",
+        "CORES_PER_WORKER": 4
+    },
+    "myexecutor_2": {
+        "POOL": "gcpcluster",
+        "REMOTE_CONDA_ENV": "parsl_py39",
+        "REMOTE_CONDA_DIR": "/contrib/Alvaro.Vidal/miniconda3",
+        "RUN_DIR": "/contrib/Alvaro.Vidal/tmp",
+        "WORKER_LOGDIR_ROOT": "/contrib/Alvaro.Vidal/tmp",
+        "SSH_CHANNEL_SCRIPT_DIR": "/contrib/Alvaro.Vidal/tmp",
+        "CORES_PER_WORKER": 4
+    }
+}

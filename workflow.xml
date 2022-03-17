@@ -1,0 +1,7 @@
+<tool id='multicluster_parsl_demo' name='multicluster_parsl_demo'>
+  <command interpreter='parsl'>main_wrapper.py</command>
+  <inputs>
+  </inputs>
+  <outputs>
+  </outputs>
+</tool>
