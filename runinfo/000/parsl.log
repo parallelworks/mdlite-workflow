@@ -5300,3 +5300,583 @@ LocalProvider(
 2022-03-23 22:31:18.765 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
 2022-03-23 22:31:23.763 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
 2022-03-23 22:31:23.765 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:31:28.763 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:31:28.765 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:31:33.763 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:31:33.765 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:31:38.763 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:31:38.764 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:31:43.764 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:31:43.765 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:31:48.764 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:31:48.765 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:31:53.764 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:31:53.765 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:31:58.764 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:31:58.766 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:32:03.764 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:32:03.766 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:32:08.764 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:32:08.766 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:32:13.764 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:32:13.766 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:32:18.765 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:32:18.766 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:32:23.765 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:32:23.767 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:32:28.765 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:32:28.767 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:32:33.765 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:32:33.767 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:32:38.765 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:32:38.767 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:32:43.765 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:32:43.767 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:32:48.766 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:32:48.767 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:32:53.766 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:32:53.768 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:32:58.766 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:32:58.768 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:33:03.766 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:33:03.768 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:33:08.766 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:33:08.768 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:33:13.767 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:33:13.768 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:33:18.767 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:33:18.769 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:33:23.767 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:33:23.769 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:33:28.767 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:33:28.768 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:33:33.767 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:33:33.769 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:33:38.768 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:33:38.769 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:33:43.768 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:33:43.769 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:33:48.768 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:33:48.769 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:33:53.768 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:33:53.769 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:33:58.768 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:33:58.770 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:34:03.768 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:34:03.771 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:34:08.768 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:34:08.771 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:34:13.769 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:34:13.771 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:34:18.769 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:34:18.772 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:34:23.769 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:34:23.771 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:34:28.769 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:34:28.770 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:34:33.769 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:34:33.770 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:34:38.769 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:34:38.771 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:34:43.770 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:34:43.772 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:34:48.770 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:34:48.772 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:34:53.770 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:34:53.771 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:34:58.770 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:34:58.772 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:35:03.771 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:35:03.773 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:35:08.771 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:35:08.772 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:35:13.770 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:35:13.772 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:35:18.771 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:35:18.772 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:35:23.771 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:35:23.773 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:35:28.771 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:35:28.773 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:35:33.771 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:35:33.773 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:35:38.771 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:35:38.773 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:35:43.771 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:35:43.773 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:35:48.772 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:35:48.773 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:35:53.772 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:35:53.773 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:35:58.772 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:35:58.774 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:36:03.772 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:36:03.774 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:36:08.772 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:36:08.774 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:36:13.773 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:36:13.775 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:36:18.773 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:36:18.774 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:36:23.773 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:36:23.775 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:36:28.773 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:36:28.774 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:36:33.773 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:36:33.775 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:36:38.774 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:36:38.775 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:36:43.774 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:36:43.775 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:36:48.774 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:36:48.775 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:36:53.774 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:36:53.775 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:36:58.774 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:36:58.776 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:37:03.774 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:37:03.776 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:37:08.774 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:37:08.776 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:37:13.775 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:37:13.776 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:37:18.775 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:37:18.777 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:37:23.775 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:37:23.776 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:37:28.775 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:37:28.778 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:37:33.776 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:37:33.779 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:37:38.776 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:37:38.778 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:37:43.776 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:37:43.778 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:37:48.777 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:37:48.779 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:37:53.776 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:37:53.779 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:37:58.777 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:37:58.779 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:38:03.777 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:38:03.779 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:38:08.777 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:38:08.779 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:38:13.777 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:38:13.779 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:38:18.778 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:38:18.779 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:38:23.778 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:38:23.779 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:38:28.777 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:38:28.779 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:38:33.778 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:38:33.780 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:38:38.778 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:38:38.779 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:38:43.778 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:38:43.780 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:38:48.778 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:38:48.780 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:38:53.779 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:38:53.780 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:38:58.779 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:38:58.781 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:39:03.779 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:39:03.780 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:39:08.779 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:39:08.781 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:39:13.779 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:39:13.781 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:39:18.780 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:39:18.781 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:39:23.780 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:39:23.782 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:39:28.780 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:39:28.782 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:39:33.780 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:39:33.782 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:39:38.780 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:39:38.782 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:39:43.780 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:39:43.781 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:39:48.780 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:39:48.782 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:39:53.780 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:39:53.782 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:39:58.781 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:39:58.783 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:40:03.781 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:40:03.782 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:40:08.781 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:40:08.782 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:40:13.781 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:40:13.783 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:40:18.781 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:40:18.783 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:40:23.782 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:40:23.783 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:40:28.781 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:40:28.783 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:40:33.782 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:40:33.784 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:40:38.782 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:40:38.783 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:40:43.782 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:40:43.784 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:40:48.782 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:40:48.784 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:40:53.782 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:40:53.784 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:40:58.782 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:40:58.784 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:41:03.782 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:41:03.784 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:41:08.783 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:41:08.784 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:41:13.784 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:41:13.786 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:41:18.783 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:41:18.785 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:41:23.783 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:41:23.785 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:41:28.784 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:41:28.786 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:41:33.784 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:41:33.786 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:41:38.800 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:41:38.832 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:41:43.785 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:41:43.787 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:41:48.785 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:41:48.787 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:41:53.785 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:41:53.787 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:41:58.786 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:41:58.788 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:42:03.786 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:42:03.787 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:42:08.786 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:42:08.787 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:42:13.786 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:42:13.787 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:42:18.786 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:42:18.788 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:42:23.786 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:42:23.787 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:42:28.786 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:42:28.788 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:42:33.787 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:42:33.788 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:42:38.787 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:42:38.788 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:42:43.787 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:42:43.788 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:42:48.787 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:42:48.790 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:42:53.787 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:42:53.789 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:42:58.787 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:42:58.789 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:43:03.788 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:43:03.789 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:43:08.788 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:43:08.790 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:43:13.788 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:43:13.790 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:43:18.788 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:43:18.790 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:43:23.788 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:43:23.790 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:43:28.788 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:43:28.790 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:43:33.789 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:43:33.790 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:43:38.789 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:43:38.791 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:43:43.789 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:43:43.790 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:43:48.789 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:43:48.791 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:43:53.789 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:43:53.792 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:43:58.789 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:43:58.791 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:44:03.790 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:44:03.792 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:44:08.790 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:44:08.792 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:44:13.790 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:44:13.792 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:44:18.790 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:44:18.792 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:44:23.791 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:44:23.792 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:44:28.790 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:44:28.792 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:44:33.791 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:44:33.792 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:44:38.791 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:44:38.793 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:44:43.791 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:44:43.793 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:44:48.791 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:44:48.793 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:44:53.791 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:44:53.793 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:44:58.792 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:44:58.795 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:45:03.792 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:45:03.793 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:45:08.792 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:45:08.793 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:45:13.792 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:45:13.794 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:45:18.792 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:45:18.794 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:45:23.792 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:45:23.795 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:45:28.792 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:45:28.795 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:45:33.793 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:45:33.794 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:45:38.793 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:45:38.794 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:45:43.793 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:45:43.794 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:45:48.793 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:45:48.794 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:45:53.794 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:45:53.796 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:45:58.793 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:45:58.795 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:46:03.794 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:46:03.796 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:46:08.793 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:46:08.796 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:46:13.794 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:46:13.796 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:46:18.794 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:46:18.796 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:46:23.794 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:46:23.795 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:46:28.794 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:46:28.796 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:46:33.794 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:46:33.796 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:46:38.794 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:46:38.796 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:46:43.795 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:46:43.798 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:46:48.795 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:46:48.797 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:46:53.795 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:46:53.797 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:46:58.795 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:46:58.797 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:47:03.795 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:47:03.797 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:47:08.796 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:47:08.797 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:47:13.796 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:47:13.797 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:47:18.796 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:47:18.798 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:47:23.796 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:47:23.798 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:47:28.796 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:47:28.798 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:47:33.797 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:47:33.798 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:47:38.796 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:47:38.798 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:47:43.797 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:47:43.799 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:47:48.797 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:47:48.799 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:47:53.797 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:47:53.799 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:47:58.797 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:47:58.799 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:48:03.797 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:48:03.799 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:48:08.798 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:48:08.800 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:48:13.798 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:48:13.800 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:48:18.798 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:48:18.800 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:48:23.798 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:48:23.800 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:48:28.798 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:48:28.800 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:48:33.798 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:48:33.800 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:48:38.799 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:48:38.800 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:48:43.798 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:48:43.800 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:48:48.799 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:48:48.801 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:48:53.799 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:48:53.801 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:48:58.799 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:48:58.801 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:49:03.799 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:49:03.801 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:49:08.800 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:49:08.801 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:49:13.800 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:49:13.802 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:49:18.800 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:49:18.802 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:49:23.800 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:49:23.802 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:49:28.800 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:49:28.802 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:49:33.801 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:49:33.802 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:49:38.801 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:49:38.802 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:49:43.801 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:49:43.803 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:49:48.801 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:49:48.803 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:49:53.801 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:49:53.803 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:49:58.801 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:49:58.803 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:50:03.801 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:50:03.803 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:50:08.802 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:50:08.804 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:50:13.802 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:50:13.804 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:50:18.802 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:50:18.803 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:50:23.802 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:50:23.804 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:50:28.802 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:50:28.804 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:50:33.802 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:50:33.804 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:50:38.803 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:50:38.805 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:50:43.803 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:50:43.804 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:50:48.803 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:50:48.805 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:50:53.803 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:50:53.804 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:50:58.803 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:50:58.805 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:51:03.803 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:51:03.805 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:51:08.803 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:51:08.805 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:51:13.804 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:51:13.805 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:51:18.804 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:51:18.805 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:51:23.804 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:51:23.806 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:51:28.804 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:51:28.807 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:51:33.805 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:51:33.806 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:51:38.804 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:51:38.806 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:51:43.804 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:51:43.807 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:51:48.805 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:51:48.806 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:51:53.805 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:51:53.806 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:51:58.805 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:51:58.807 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:52:03.805 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:52:03.807 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:52:08.806 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:52:08.808 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:52:13.806 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:52:13.808 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:52:18.805 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:52:18.807 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:52:23.806 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:52:23.808 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:52:28.806 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:52:28.808 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:52:33.806 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:52:33.808 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:52:38.806 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:52:38.808 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:52:43.807 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:52:43.809 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:52:48.807 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:52:48.808 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:52:53.807 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:52:53.808 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:52:58.807 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:52:58.809 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:53:03.807 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:53:03.809 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:53:08.807 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:53:08.809 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:53:13.807 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:53:13.809 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:53:18.807 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:53:18.809 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:53:23.808 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:53:23.811 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:53:28.808 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:53:28.810 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:53:33.809 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:53:33.811 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:53:38.809 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:53:38.811 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:53:43.808 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:53:43.810 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:53:48.809 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:53:48.810 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:53:53.809 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:53:53.811 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:53:58.809 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:53:58.811 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:54:03.810 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:54:03.811 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:54:08.809 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:54:08.811 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:54:13.810 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:54:13.811 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:54:18.810 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:54:18.812 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:54:23.810 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:54:23.811 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:54:28.810 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:54:28.812 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:54:33.810 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:54:33.812 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:54:38.810 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:54:38.812 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:54:43.811 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:54:43.813 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:54:48.811 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:54:48.812 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:54:53.811 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:54:53.812 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:54:58.811 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:54:58.813 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:55:03.811 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:55:03.813 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:55:08.811 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:55:08.813 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:55:13.812 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:55:13.814 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:55:18.812 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:55:18.814 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:55:23.812 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:55:23.814 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:55:28.812 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:55:28.814 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
+2022-03-23 22:55:33.812 parsl.providers.local.local:92 [DEBUG]  Checking status of: [27336]
+2022-03-23 22:55:33.815 parsl.dataflow.strategy:200 [DEBUG]  Executor coaster_single_node has 0 active tasks, 1/0/0 running/submitted/pending blocks, and 1 connected workers
