@@ -12,7 +12,7 @@ from parsl.executors import HighThroughputExecutor
 
 import parsl_utils
 
-with open('executors.json'], 'r') as f:
+with open('executors.json', 'r') as f:
     exec_conf = json.load(f)
 
 # Apps to test Parsl
