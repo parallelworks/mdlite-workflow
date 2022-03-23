@@ -1,0 +1,10 @@
+2022-03-23 18:53:52.293 interchange:155 [INFO]  Attempting connection to client at 127.0.0.1 on ports: 55248,55272,55098
+2022-03-23 18:53:52.295 interchange:168 [INFO]  Connected to client
+2022-03-23 18:53:52.295 interchange:204 [INFO]  Bound to ports 54550,54995 for incoming worker connections
+2022-03-23 18:53:52.296 interchange:218 [INFO]  Platform info: {'parsl_v': '0.9.0-a0-2020.0609.1631-7b1223db-v001', 'python_v': '3.7.3', 'os': 'Linux', 'hostname': 'go-centos-user-1', 'dir': '/pw/workflows/my_workflow'}
+2022-03-23 18:53:52.297 interchange:336 [INFO]  Incoming ports bound
+2022-03-23 18:53:52.297 interchange:253 [INFO]  [TASK_PULL_THREAD] Starting
+2022-03-23 18:53:53.181 interchange:397 [INFO]  [MAIN] Adding manager: b'37e0e234fb23' to ready queue
+2022-03-23 18:53:53.181 interchange:399 [INFO]  [MAIN] Registration info for manager b'37e0e234fb23': {'parsl_v': '0.9.0-a0-2020.0609.1631-7b1223db-v001', 'python_v': '3.7.3', 'worker_count': 1, 'block_id': '0', 'prefetch_capacity': 0, 'max_capacity': 1, 'os': 'Linux', 'hostname': 'go-centos-user-1', 'dir': '/pw/workflows/my_workflow', 'cpu_count': 8, 'total_memory': 63158104064, 'reg_time': datetime.datetime(2022, 3, 23, 18, 53, 53)}
+2022-03-23 18:53:53.181 interchange:419 [INFO]  [MAIN] Manager b'37e0e234fb23' has compatible Parsl version 0.9.0-a0-2020.0609.1631-7b1223db-v001
+2022-03-23 18:53:53.182 interchange:421 [INFO]  [MAIN] Manager b'37e0e234fb23' has compatible Python version 3.7
