@@ -1,0 +1,1 @@
+python ./mexdex/writeDesignExplorerCsv.py --imagesDirectory "results/case_{:d}" cases.list mexdex/kpi.json . output.csv
