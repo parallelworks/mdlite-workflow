@@ -1,116 +1,23 @@
 <tool id='ttnguyen37_my_workflow' name='ttnguyen37_my_workflow'>
-       	<command interpreter='parsl-nb'>main.ipynb</command>
-	    <inputs>
-		        <section name='model_inputs' type='section' title='Model Inputs' expanded='true'>
-				      <param name='nw_file' type='data' label='Input File (.nw)' format='nw'>
-					            </param>
-						          <param name='structures' type='select' label='Structure Files' width='100%_none' help='' multiple='true'>
-								          <option value="/pw/storage/gcs_store/gw100_structures/100-41-4.xyz" selected="true">100-41-4</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/10028-15-6.xyz">10028-15-6</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/10043-11-5.xyz">10043-11-5</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/106-97-8.xyz">106-97-8</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/108-88-3.xyz">108-88-3</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/108-95-2.xyz">108-95-2</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/108-95-2v2.xyz">108-95-2v2</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/110-86-1.xyz">110-86-1</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/12184-80-4.xyz">12184-80-4</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/12185-09-0.xyz">12185-09-0</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/12187-06-3.xyz">12187-06-3</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/12190-70-4.xyz">12190-70-4</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/124-38-9.xyz">124-38-9</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/1304-56-9.xyz">1304-56-9</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/1309-48-4.xyz">1309-48-4</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/13283-31-3.xyz">13283-31-3</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/1333-74-0.xyz">1333-74-0</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/13768-60-0.xyz">13768-60-0</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/14452-59-6.xyz">14452-59-6</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/14868-53-2.xyz">14868-53-2</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/1590-87-0.xyz">1590-87-0</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/1603-84-5.xyz">1603-84-5</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/17108-85-9.xyz">17108-85-9</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/17739-47-8.xyz">17739-47-8</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/19287-45-7.xyz">19287-45-7</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/23878-46-8.xyz">23878-46-8</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/25681-79-2.xyz">25681-79-2</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/25681-80-5.xyz">25681-80-5</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/25681-81-6.xyz">25681-81-6</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/302-01-2.xyz">302-01-2</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/392-56-3.xyz">392-56-3</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/39297-86-4.xyz">39297-86-4</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/39297-88-6.xyz">39297-88-6</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/463-58-1.xyz">463-58-1</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/50-00-0.xyz">50-00-0</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/507-25-5.xyz">507-25-5</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/542-92-7.xyz">542-92-7</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/544-92-3.xyz">544-92-3</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/558-13-4.xyz">558-13-4</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/56-23-5.xyz">56-23-5</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/57-13-6.xyz">57-13-6</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/593-60-2.xyz">593-60-2</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/593-60-2v2.xyz">593-60-2v2</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/593-66-8.xyz">593-66-8</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/60-29-7.xyz">60-29-7</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/62-53-3.xyz">62-53-3</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/629-20-9.xyz">629-20-9</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/630-08-0.xyz">630-08-0</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/64-17-5.xyz">64-17-5</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/64-18-6.xyz">64-18-6</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/65-71-4.xyz">65-71-4</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/66-22-8.xyz">66-22-8</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/67-56-1.xyz">67-56-1</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/71-30-7.xyz">71-30-7</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/71-43-2.xyz">71-43-2</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/73-24-5.xyz">73-24-5</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/73-40-5.xyz">73-40-5</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/74-82-8.xyz">74-82-8</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/74-84-0.xyz">74-84-0</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/74-85-1.xyz">74-85-1</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/74-86-2.xyz">74-86-2</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/74-90-8.xyz">74-90-8</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/74-98-6.xyz">74-98-6</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7439-90-9.xyz">7439-90-9</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7440-01-9.xyz">7440-01-9</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7440-37-1.xyz">7440-37-1</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7440-59-7.xyz">7440-59-7</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7440-63-3.xyz">7440-63-3</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7446-09-5.xyz">7446-09-5</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/75-01-4.xyz">75-01-4</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/75-02-5.xyz">75-02-5</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/75-07-0.xyz">75-07-0</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/75-15-0.xyz">75-15-0</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/75-19-4.xyz">75-19-4</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/75-73-0.xyz">75-73-0</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7553-56-2.xyz">7553-56-2</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7580-67-8.xyz">7580-67-8</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7647-01-0.xyz">7647-01-0</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7647-14-5.xyz">7647-14-5</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7664-39-3.xyz">7664-39-3</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7664-41-7.xyz">7664-41-7</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7693-26-7.xyz">7693-26-7</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7722-84-1.xyz">7722-84-1</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7726-95-6.xyz">7726-95-6</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7727-37-9.xyz">7727-37-9</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7732-18-5.xyz">7732-18-5</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7758-02-3.xyz">7758-02-3</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7782-41-4.xyz">7782-41-4</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7782-50-5.xyz">7782-50-5</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7782-65-2.xyz">7782-65-2</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7782-79-8.xyz">7782-79-8</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7783-06-4.xyz">7783-06-4</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7783-40-6.xyz">7783-40-6</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7783-60-0.xyz">7783-60-0</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7783-63-3.xyz">7783-63-3</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7784-18-1.xyz">7784-18-1</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7784-23-8.xyz">7784-23-8</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7784-42-1.xyz">7784-42-1</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7786-30-3.xyz">7786-30-3</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7789-24-4.xyz">7789-24-4</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7803-51-2.xyz">7803-51-2</option>
-									  <option value="/pw/storage/gcs_store/gw100_structures/7803-62-5.xyz">7803-62-5</option>
-									        </param>
-										    </section>
-										      </inputs>
-										        <outputs>
-												  </outputs>
-											  </tool>
-
+  <command interpreter='parsl-nb'>main.ipynb</command>
+  <inputs>
+    <section name='geometry' type='section' title='Runtime Parameters' expanded='true'>
+      <param name='npart' label='Number of Particles' type='text' value='25:100:25' width='50%' help='Whitespace delimited or range/step (e.g. min:max:step)' argument='input'>
+      </param>
+      <param name='steps' label='Timesteps' type='text' value='3000:9000:3000' width='50%' help='Whitespace delimited or range/step (e.g. min:max:step)' argument='input'>
+      </param>
+      <param name='mass' label='Particle Mass' type='text' value='0.01' width='50%' help='Whitespace delimited or range/step (e.g. min:max:step)' argument='input'>
+      </param>
+      <param name='trsnaps' label='Frames' type='text' value='10' width='50%' help='Whitespace delimited or range/step (e.g. min:max:step)' argument='input'>
+      </param>
+    </section>
+    <param name='casename' label='Case Name' type='text' value='My MD-Lite Sweep' width='30%_none'>
+    </param>
+  </inputs>
+  <outputs>
+    <data name='csv' format='csv' label='${casename}-CSV'>
+    </data>
+    <data name='html' format='html' label='${casename}-HTML'>
+    </data>
+  </outputs>
+</tool>
