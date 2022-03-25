@@ -1,0 +1,12 @@
+mass,0.01|npart,25|steps,3000|trsnaps,10
+mass,0.01|npart,25|steps,6000|trsnaps,10
+mass,0.01|npart,25|steps,9000|trsnaps,10
+mass,0.01|npart,50|steps,3000|trsnaps,10
+mass,0.01|npart,50|steps,6000|trsnaps,10
+mass,0.01|npart,50|steps,9000|trsnaps,10
+mass,0.01|npart,75|steps,3000|trsnaps,10
+mass,0.01|npart,75|steps,6000|trsnaps,10
+mass,0.01|npart,75|steps,9000|trsnaps,10
+mass,0.01|npart,100|steps,3000|trsnaps,10
+mass,0.01|npart,100|steps,6000|trsnaps,10
+mass,0.01|npart,100|steps,9000|trsnaps,10
