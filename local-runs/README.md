@@ -7,6 +7,20 @@ for each step along with `run.sh` scripts that
 were used to verify the run command for each
 app.
 
+The SWIFT script `main.swift` is the basis
+for this workflow; this repository was basically
+set up to convert the SWIFT script to a Jupyter
+notebook using Parsl as the workflow fabric.
+
+**Worker image dependency warning:** Steps 3 and 4
+assume that ImageMagick (convert) in installed on
+the worker.  On a SLURM cluster, it may be necessary
+to:
+```bash
+module load imagemagick/intel/7.0.10
+```
+(or similar) to get access to imagemagick.
+
 ## Step 1: prepInputs
 
 The PW form will condense its input into a single text file that is stored as `params.run`.
@@ -36,4 +50,17 @@ direct run on the command line looks like:
 ## Step 3: renderFrame
 
 This step renders the output images based on the particle trajectories
-calculated in Step 2.
+calculated in Step 2. As far as I can tell, I think there is an error
+in `main.swift`: @metricOut should be in the input to renderframe
+(which contains actual particle positions and more data), and not
+@trjOut (which seems to contain only run summary information). An
+example invocation is:
+```bash
+renderframe metricout.tmp out.png 1
+```
+Inside renderframe, the c-ray binary executable expects two pieces of
+information (in text piped in via stdin):
+1. a list of particle positions for that frame (from metricout.tmp) and
+2. a render configuration (domain size, camera position, etc.).
+
+## Step 4: Compile the frames into a movie
