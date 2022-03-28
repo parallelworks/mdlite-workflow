@@ -34,11 +34,14 @@ END
 # 2. a render configuration (in this case created in the script and
 #    sent via cat.
 (
-  awk "\$1 == $frame {for (i=2; i<NF; i++) printf \$i \" \"; print \$NF}" <$mdtrj | sed -e 's/^[0-9]\+ //' 
+  awk "\$1 == $frame {for (i=2; i<NF; i++) printf \$i \" \"; print \$NF}" <$mdtrj | sed -e 's/^[0-9]\+ //'
 
   cat c-ray-trailer
 ) | ./c-ray >t.ppm
 
-convert t.ppm $vzout
+# If convert is not available, keep output as .ppm.
+#convert t.ppm $vzout
+mv t.ppm $vzout
 
-rm t.ppm c-ray-trailer
+#rm t.ppm c-ray-trailer
+rm c-ray-trailer
