@@ -21,6 +21,12 @@ module load imagemagick/intel/7.0.10
 ```
 (or similar) to get access to imagemagick.
 
+**Extent of parallelization:** Steps 1, 4 and 5
+are run locally instead of going to cloud workers
+because they are not computationally intense
+and/or they depend on software that may or
+may not be installed on remote resources.
+
 ## Step 1: prepInputs
 
 The PW form will condense its input into a single text file that is stored as `params.run`.
@@ -64,3 +70,19 @@ information (in text piped in via stdin):
 2. a render configuration (domain size, camera position, etc.).
 
 ## Step 4: Compile the frames into a movie
+
+This step is a direct wrapper around the Imagemagick
+convert tool.  As convert may or may not be installed
+on remote resources, we opt to run this step locally
+(NOT as a Parsl app).
+
+## Step 5: Compile the movies into DEX files
+
+Each case (i.e. unique combination of input parameters)
+in this parameter sweep results in a movie.  The
+Design Explorer (DEX) allows for viewing the results
+of the many simulations together.  Since all files
+need to be copied locally for DEX file construction
+(and it is not an expensive step), run this locally.
+
+
