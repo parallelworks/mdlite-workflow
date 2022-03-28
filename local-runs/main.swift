@@ -13,20 +13,17 @@ file params         <arg("paramFile","params.run")>;
 string outdir       = "results/"; # Directory where the outputs are saved
 string casedir      = strcat(outdir,"case"); # Directory where the outputs for each case are saved
 
-# add models - SWIFT DOES IT THIS WAY
+# add models
 file[] mdlite       <Ext;exec="utils/mapper.sh",root="models/mdlite">;
 file[] cray         <Ext;exec="utils/mapper.sh",root="models/c-ray">;
 file[] mexdex       <Ext;exec="utils/mapper.sh",root="models/mexdex">;
 
 # PARSL DOES IT THIS WAY:
-files_to_stage = [Path("models/mdlite"),Path("models/c-ray"),Path("models/mexdex")]
-
-@bash_app
-my_parsl_app(inputs=files_to_stage, outputs=[]):
-	# Now you can access mdlite, c-ray, and mexdex
-
-
-Path.py is in the ocean_parcels_demo.  Include it in the MDLite workflow folder.
+#files_to_stage = [Path("models/mdlite"),Path("models/c-ray"),Path("models/mexdex")]
+#
+#@bash_app
+#my_parsl_app(inputs=files_to_stage, outputs=[]):
+# Now you can access mdlite, c-ray, and mexdex
 
 
 # workflow outputs
