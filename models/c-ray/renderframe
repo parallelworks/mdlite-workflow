@@ -6,10 +6,13 @@ mdtrj=$HOME/$1
 vzout=$HOME/$2
 frame=$3
 
+# Change directory to run script location, see below for more:
+# https://stackoverflow.com/questions/28894290/what-does-cd-0-mean-in-bash
 cd ${0%/*} || exit 1
 
 chmod 777 *
 
+# Create the render configuration here
 cat <<END >c-ray-trailer
 # walls
 #s	0 -1000 0		999		1.0 1.0 1.0			10.0	10.0
@@ -26,12 +29,16 @@ l	50 100 -250
 c	0 6 -17		20		0 -1 0
 END
 
+# c-ray expects text from STDIN that defines:
+# 1. a list of particle positions (in this case from awk) and
+# 2. a render configuration (in this case created in the script and
+#    sent via cat.
 (
   awk "\$1 == $frame {for (i=2; i<NF; i++) printf \$i \" \"; print \$NF}" <$mdtrj | sed -e 's/^[0-9]\+ //' 
 
   cat c-ray-trailer
 ) | ./c-ray >t.ppm
 
-convert t.ppm $vzout 
+convert t.ppm $vzout
 
 rm t.ppm c-ray-trailer
