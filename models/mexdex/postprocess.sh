@@ -13,16 +13,20 @@ colorby="kinetic"
 
 echo $@
 
-if [[ "$rpath" == *"/efs/job_working_directory"* ]];then
-	basedir="$(echo /download$rpath | sed "s|/efs/job_working_directory||g" )"
-	DEbase="/preview"  
-elif [[ "$rpath" == *"/export/galaxy-central"* ]];then 
-	basedir="$(echo /download$rpath | sed "s|/export/galaxy-central/database/job_working_directory||g" )"
-	DEbase="/preview"  
-else
-	basedir="$(echo http://go.parallel.works:8080/preview$rpath | sed "s|/core||g" )"
-	DEbase="http://go.parallel.works:8080/preview/share"
-fi 
+# I think these are really old basedirs and DEbase
+#if [[ "$rpath" == *"/efs/job_working_directory"* ]];then
+#	basedir="$(echo /download$rpath | sed "s|/efs/job_working_directory||g" )"
+#	DEbase="/preview"
+#elif [[ "$rpath" == *"/export/galaxy-central"* ]];then
+#	basedir="$(echo /download$rpath | sed "s|/export/galaxy-central/database/job_working_directory||g" )"
+#	DEbase="/preview"
+#else
+#	basedir="$(echo http://dev.parallel.works:8080/preview$rpath | sed "s|/core||g" )"
+#	DEbase="http://dev.parallel.works:8080/preview/share"
+#fi
+
+basedir=$(realpath $rpath)
+DEbase="/preview"
 
 # write the csv file
 python ./models/mexdex/writeDesignExplorerCsv.py --imagesDirectory "results/case_{:d}" cases.list models/mexdex/kpi.json $basedir $outcsv
