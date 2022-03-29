@@ -25,7 +25,12 @@ echo $@
 #	DEbase="http://dev.parallel.works:8080/preview/share"
 #fi
 
+# Absolute path is good, but makes it hard to archive data in different directory.
+# Use the move_dex_data.sh script to change the absolute paths.
 basedir=$(realpath $rpath)
+
+# Retain a relative path:
+#basedir=$rpath
 DEbase="/preview"
 
 # write the csv file
