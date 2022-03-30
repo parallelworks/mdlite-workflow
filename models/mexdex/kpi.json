@@ -1,21 +1,21 @@
 {
   "potential": {
     "IsParaviewMetric": "no",
-    "resultFile": "results/case_{:d}/metric.out",
+    "resultFile": "results/case_{:d}/md/metric.out",
     "delimiter": "\n",
     "DEXoutputFlag": "",
     "locationInFile": "2"
   },
   "kinetic": {
     "IsParaviewMetric": "no",
-    "resultFile": "results/case_{:d}/metric.out",
+    "resultFile": "results/case_{:d}/md/metric.out",
     "delimiter": "\n",
     "DEXoutputFlag": "",
     "locationInFile": "3"
   },
   "relativeerr": {
     "IsParaviewMetric": "no",
-    "resultFile": "results/case_{:d}/metric.out",
+    "resultFile": "results/case_{:d}/md/metric.out",
     "delimiter": "\n",
     "DEXoutputFlag": "",
     "locationInFile": "4"
