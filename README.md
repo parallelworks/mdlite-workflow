@@ -1,6 +1,6 @@
 # MDLITE: A lightweight Molecular Dynamics demonstration
 
-MDLite is a small, portable molecular dynamics parameter sweep workflow
+MDLite is a small, portable molecular dynamics (MD) parameter sweep workflow
 with no dependencies other than Parsl, ImageMagick, and the executables
 distributed with the workflow. (Furthermore, ImageMagick is only required
 on the host, the computer that initiates the workflow, not on the remote
@@ -10,11 +10,20 @@ resource.  The parameter sweep outputs are visualized in the Design
 Explorer. The entire workflow is embedded in a Jupyter notebook with
 substantial supporting documentation; this workflow is an ideal
 starting point for new users and a possible template for building
-custom workflows.
+custom workflows with topologies similar to parameter sweeps.
 
 The workflow is orchestrated with the
 [Parsl parallel scripting library](https://parsl-project.org/) via
 a Jupyter notebook ![according to this schematic](images/mdlite-parameter-sweep.png).
+
+## Contents
+
++ **`./images`:** contains any images to be displayed in the documentation.
++ **`./local-runs`:** contains scripts to faciliate testing the individual steps of the workflow on a local computer.
++ **`./models`:** contains the code and executables for the MD simulation and visulaization apps.
++ **`./utils`:** contains helper utilities to streamline the workflow code.
++ **`main.ipynb`:** is the Jupyter notebook that contains the workflow code.
++ **`workflow.xml`:** is the file that defines the workflow launch form when clicking on the MDLite workflow card on the left column of the `Compute` tab.
 
 ## Installation
 
