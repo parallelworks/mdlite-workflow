@@ -14,7 +14,7 @@ custom workflows with topologies similar to parameter sweeps.
 
 The workflow is orchestrated with the
 [Parsl parallel scripting library](https://parsl-project.org/) via
-a Jupyter notebook ![according to this schematic](images/mdlite-parameter-sweep.png).
+a Jupyter notebook according to the schematic below. ![.](images/mdlite-parameter-sweep.png)
 
 ## Contents
 
