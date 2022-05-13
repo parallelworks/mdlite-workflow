@@ -1,5 +1,5 @@
 <tool id='multicluster_parsl_demo' name='multicluster_parsl_demo'>
-  <command interpreter='parsl'>main_wrapper.py</command>
+  <command interpreter='bash'>main.sh</command>
   <inputs>
   </inputs>
   <outputs>
