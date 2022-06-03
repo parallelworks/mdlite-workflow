@@ -1,0 +1,17 @@
+on: [push]
+
+jobs:
+  test-pw-workflow:
+    runs-on: ubuntu-latest
+    name: test-pw-workflow-noaa
+    steps:
+      - name: run-workflow-noaa
+        id: run-noaa
+        uses: parallelworks/test-workflow-action@v1
+        with:
+          who-to-greet: 'Mona the Octocat'
+          pw-user-host: 'noaa-user-1.parallel.works'
+          pw-api-key: ${{ secrets.ALVAROVIDAL_NOAA_API_KEY }}
+          pw-user: 'Alvaro.Vidal'
+          resource-pool-names: 'koehr_cpu'
+          workflow-name: 'singlecluster_parsl_demo'
