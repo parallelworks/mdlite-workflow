@@ -6,7 +6,7 @@ This workflow is a "hello world" example using Parsl to connect to remote resour
 The workflow executes a python app and a bash app:
 
 **Python App:**
-Returns the host name of the controller node as a Python object and prints it to the standard output (`/pw/jobs/job_number/std.out`).
+Returns the host name of the controller node as a Python object and prints it to the standard output (`/pw/jobs/job_number/std.out`). Also returns the input parameter name.
 
 **Bash App:**
 Sends the file `./hello_srun.in` to the controller node, writes the host names of the compute nodes in it and returns it back to the job directory (`/pw/jobs/job_number/hello_srun-1.out`).
