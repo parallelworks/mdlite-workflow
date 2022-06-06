@@ -1,6 +1,7 @@
-<tool id='multicluster_parsl_demo' name='multicluster_parsl_demo'>
+<tool id='singlecluster_parsl_demo' name='singlecluster_parsl_demo'>
   <command interpreter='bash'>main.sh</command>
   <inputs>
+        <param name='name' label='Enter name to greet' type='text' help='This hello world workflow will print the entered name' value='PW_USER' width='50%_none'></param>
   </inputs>
   <outputs>
   </outputs>

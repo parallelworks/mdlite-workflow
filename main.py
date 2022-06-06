@@ -24,9 +24,11 @@ job_number = os.path.basename(os.getcwd())
 # PARSL APPS:
 @parsl_utils.parsl_wrappers.log_app
 @python_app(executors=['myexecutor_1'])
-def hello_python_app_1(stdout='std.out', stderr = 'std.err'):
+def hello_python_app_1(name = '', stdout='std.out', stderr = 'std.err'):
     import socket
-    return 'Hello python_app_1 from ' + socket.gethostname()
+    if not name:
+        name = 'python_app_1'
+    return 'Hello ' + name + ' from ' + socket.gethostname()
 
 @parsl_utils.parsl_wrappers.log_app
 @parsl_utils.parsl_wrappers.stage_app(exec_conf['myexecutor_1']['HOST_USER'] + '@' + exec_conf['myexecutor_1']['HOST_IP'])
@@ -54,9 +56,18 @@ def hello_srun_1(run_dir, slurm_info = {}, inputs_dict = {}, outputs_dict = {}, 
         walltime = slurm_info['walltime']
     )
 
-
+def read_args():
+    parser=argparse.ArgumentParser()
+    parsed, unknown = parser.parse_known_args()
+    for arg in unknown:
+        if arg.startswith(("-", "--")):
+            parser.add_argument(arg)
+    pwargs=vars(parser.parse_args())
+    print(pwargs)
+    return pwargs
 
 if __name__ == '__main__':
+    args = read_args()
 
     # Add sandbox directory
     # FIXME: Uncomment:
@@ -100,7 +111,7 @@ if __name__ == '__main__':
     parsl.load(config)
 
     print('\n\n\nHELLO FROM CONTROLLER NODE:', flush = True)
-    fut_1 = hello_python_app_1()
+    fut_1 = hello_python_app_1(name = args['name'])
 
     print(fut_1.result())
 

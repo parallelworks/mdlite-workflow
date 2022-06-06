@@ -1,4 +1,6 @@
 #!/bin/bash
+date
+
 pudir=parsl_utils #$(dirname $0)
 . ${pudir}/utils.sh
 
@@ -44,6 +46,7 @@ bash ${pudir}/prepare_resources.sh ${job_id} &> logs/prepare_resources.out
 echo; echo; echo
 echo "RUNNING PARSL JOB"
 echo
+echo "Input parameters: $@"
 # To track and cancel the job
 python main.py $@ --job_id ${job_id}
 ec=$?

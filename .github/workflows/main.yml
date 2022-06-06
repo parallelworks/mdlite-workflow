@@ -14,3 +14,4 @@ jobs:
           pw-user: 'alvarovidalto'
           resource-pool-names: 'gcpslurmv2'
           workflow-name: 'singlecluster_parsl_demo'
+          workflow-inputs: '{"name": "PW_USER"}'
