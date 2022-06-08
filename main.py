@@ -85,17 +85,17 @@ if __name__ == '__main__':
                 label = 'myexecutor_1',
                 worker_debug = True,             # Default False for shorter logs
                 cores_per_worker = float(exec_conf['myexecutor_1']['CORES_PER_WORKER']), # One worker per node
-                worker_logdir_root = exec_conf['myexecutor_1']['WORKER_LOGDIR_ROOT'],  #os.getcwd() + '/parsllogs',
+                worker_logdir_root = os.path.expanduser(exec_conf['myexecutor_1']['WORKER_LOGDIR_ROOT']),  #os.getcwd() + '/parsllogs',
                 provider = LocalProvider(
                     worker_init = 'source {conda_sh}; conda activate {conda_env}; cd {run_dir}'.format(
                         conda_sh = os.path.join(exec_conf['myexecutor_1']['CONDA_DIR'], 'etc/profile.d/conda.sh'),
                         conda_env = exec_conf['myexecutor_1']['CONDA_ENV'],
-                        run_dir = exec_conf['myexecutor_1']['RUN_DIR']
+                        run_dir = os.path.expanduser(exec_conf['myexecutor_1']['RUN_DIR'])
                     ),
                     channel = SSHChannel(
                         hostname = exec_conf['myexecutor_1']['HOST_IP'],
                         username = exec_conf['myexecutor_1']['HOST_USER'],
-                        script_dir = exec_conf['myexecutor_1']['SSH_CHANNEL_SCRIPT_DIR'], # Full path to a script dir where generated scripts could be sent to
+                        script_dir = os.path.expanduser(exec_conf['myexecutor_1']['SSH_CHANNEL_SCRIPT_DIR']), # Full path to a script dir where generated scripts could be sent to
                         key_filename = '/home/{PW_USER}/.ssh/pw_id_rsa'.format(PW_USER = os.environ['PW_USER'])
                     )
                 )
