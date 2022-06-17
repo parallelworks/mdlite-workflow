@@ -18,4 +18,4 @@ jobs:
           pw-user: 'User.Demo'
           resource-pool-names: 'gcpslurmv2basic'
           workflow-name: 'singlecluster_parsl_demo'
-          workflow-parameters: '{"inputs": {"name": "PW_USER"},"cicd": {"merge": "true","branch": "development"}}'
+          workflow-parameters: '{"inputs|name": "PW_USER","cicd|branch": "development","cicd|merge": "true"}'
