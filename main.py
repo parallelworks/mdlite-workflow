@@ -26,7 +26,7 @@ for label,executor in exec_conf.items():
 
 
 # Job runs in directory /pw/jobs/job-number
-job_number = os.path.basename(os.getcwd())
+job_number = os.path.dirname(os.getcwd().replace('/pw/jobs/', ''))
 
 # PARSL APPS:
 @parsl_utils.parsl_wrappers.log_app
