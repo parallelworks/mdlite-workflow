@@ -77,14 +77,13 @@ if __name__ == '__main__':
     args = read_args()
 
     # Add sandbox directory
-    # FIXME: Uncomment:
-    #for exec_label, exec_conf_i in exec_conf.items():
-    #    if 'RUN_DIR' in exec_conf_i:
-    #        exec_conf[exec_label]['RUN_DIR'] = os.path.join(exec_conf_i['RUN_DIR'], str(job_number))
-    #    else:
-    #        base_dir = '/tmp'
-    #        exec_conf[exec_label]['RUN_DIR'] = os.path.join(base_dir, str(job_number))
-
+    for exec_label, exec_conf_i in exec_conf.items():
+        if 'RUN_DIR' in exec_conf_i:
+            exec_conf[exec_label]['RUN_DIR'] = os.path.join(exec_conf_i['RUN_DIR'], str(job_number))
+        else:
+            base_dir = '/tmp'
+            exec_conf[exec_label]['RUN_DIR'] = os.path.join(base_dir, str(job_number))
+            
     config = Config(
         executors = [
             HighThroughputExecutor(
