@@ -6,7 +6,7 @@
         "PARTITION": "compute",
         "NTASKS_PER_NODE": 1,
         "WALLTIME": "08:00:00",
-        "CONDA_ENV": "parsl_py39",
+        "CONDA_ENV": "parsl-1.2",
         "CONDA_DIR": "~/miniconda3",
         "WORKER_LOGDIR_ROOT": "~/parsl-rundir",
         "SSH_CHANNEL_SCRIPT_DIR": "~/parsl-rundir",
