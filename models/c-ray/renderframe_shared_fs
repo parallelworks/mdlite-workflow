@@ -1,0 +1,28 @@
+#! /bin/bash
+# This version of renderframe is designed
+# to be used with a shared file system.
+# The other version assumes siloed temporary work
+# directories and relative paths as input instead
+# of here using absolute paths.
+
+mdtrj=$1
+vzout=$2
+frame=$3
+
+# Change directory to run script location, see below for more:
+# https://stackoverflow.com/questions/28894290/what-does-cd-0-mean-in-bash
+cd ${0%/*} || exit 1
+
+# Render configuration made and stored in shared file system
+# with make_c-ray-trailer.sh.
+
+# c-ray expects text from STDIN that defines:
+# 1. a list of particle positions (in this case from awk) and
+# 2. a render configuration (in this case created in the script and
+#    sent via cat.
+(
+  awk "\$1 == $frame {for (i=2; i<NF; i++) printf \$i \" \"; print \$NF}" <$mdtrj | sed -e 's/^[0-9]\+ //'
+
+  cat c-ray-trailer
+) | ./c-ray > $vzout
+
