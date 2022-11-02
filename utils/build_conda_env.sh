@@ -6,7 +6,8 @@
 #
 # With a fast internet connection
 # (i.e. download time minimal)
-# this process takes < 5 min.
+# this process takes ~2 min and
+# results in a 2.2GB Conda env.
 #
 # For moving conda envs around,
 # it is possible to put the
@@ -56,8 +57,12 @@ chmod u+x ./Miniconda3-latest-Linux-x86_64.sh
 # Clean up
 rm ./Miniconda3-latest-Linux-x86_64.sh
 
-# Define environment name
-my_env="mdlite-parsl"
+# Define environment name.  Base is
+# the default.  You can define other
+# envs with different names for testing
+# or running multiple workflows on the
+# same resource.
+my_env="mdlite"
 
 # Define specific versions here
 # or leave blank to use whatever
@@ -78,15 +83,21 @@ conda activate base
 
 # Create new environment
 # We are running Jupter notebooks so include ipython here.
-conda create -y --name $my_env python${python_version} ipython
+if [[ $my_env == "base" ]]
+then
+    conda install -y ipython
+else
+    conda create -y --name $my_env python${python_version} ipython
 
-# Jump into new environment
-conda activate $my_env
+    # Jump into new environment
+    conda activate $my_env
+fi
 
 # Install packages
 conda install -y requests
 conda install -y ipykernel
 conda install -y -c anaconda jinja2
+conda install -y -c conda-forge jupyter
 conda install -y -c conda-forge parsl
 
 # Write out the requirements.txt to document environment
