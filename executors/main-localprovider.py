@@ -7,7 +7,7 @@ print(parsl.__version__, flush = True)
 from parsl.app.app import python_app, bash_app
 from parsl.config import Config
 from parsl.channels import SSHChannel
-from parsl.providers import LocalProvider, SlurmProvider
+from parsl.providers import LocalProvider
 from parsl.executors import HighThroughputExecutor
 
 from parsl.addresses import address_by_hostname
@@ -40,15 +40,27 @@ def hello_python_app_1(name = '', stdout='std.out', stderr = 'std.err'):
 @parsl_utils.parsl_wrappers.log_app
 @parsl_utils.parsl_wrappers.stage_app(exec_conf['myexecutor_1']['HOST_USER'] + '@' + exec_conf['myexecutor_1']['HOST_IP'])
 @bash_app(executors=['myexecutor_1'])
-def hello_bash_app_1(run_dir, inputs_dict = {}, outputs_dict = {}, stdout='std.out', stderr = 'std.err'):
+def hello_srun_1(run_dir, slurm_info = {}, inputs_dict = {}, outputs_dict = {}, stdout='std.out', stderr = 'std.err'):
+    if not slurm_info:
+        slurm_info = {
+            'nodes': '1',
+            'partition': 'compute',
+            'ntasks_per_node': '1',
+            'walltime': '01:00:00'
+        }
+
     return '''
         cd {run_dir}
         cat {hello_in} > {hello_out}
-        echo $SLURM_JOB_NODELIST >> {hello_out}
+        srun --nodes={nodes}-{nodes} --partition={partition} --ntasks-per-node={ntasks_per_node} --time={walltime} --exclusive hostname >> {hello_out}
     '''.format(
         run_dir = run_dir,
         hello_in = inputs_dict["test-in-file"]["worker_path"],
         hello_out = outputs_dict["test-out-file"]["worker_path"],
+        nodes = slurm_info['nodes'],
+        partition = slurm_info['partition'],
+        ntasks_per_node = slurm_info['ntasks_per_node'],
+        walltime = slurm_info['walltime']
     )
 
 def read_args():
@@ -81,14 +93,7 @@ if __name__ == '__main__':
                 worker_debug = True,             # Default False for shorter logs
                 cores_per_worker = float(exec_conf['myexecutor_1']['CORES_PER_WORKER']), # One worker per node
                 worker_logdir_root = exec_conf['myexecutor_1']['WORKER_LOGDIR_ROOT'],  #os.getcwd() + '/parsllogs',
-                address = exec_conf['myexecutor_1']['ADDRESS'],
-                provider = SlurmProvider(
-                    partition = exec_conf['myexecutor_1']['PARTITION'],
-                    nodes_per_block = int(exec_conf['myexecutor_1']['NODES']),
-                    cores_per_node = int(exec_conf['myexecutor_1']['NTASKS_PER_NODE']),
-                    min_blocks = int(exec_conf['myexecutor_1']['MIN_BLOCKS']),
-                    max_blocks = int(exec_conf['myexecutor_1']['MAX_BLOCKS']),
-                    walltime = exec_conf['myexecutor_1']['WALLTIME'],
+                provider = LocalProvider(
                     worker_init = 'source {conda_sh}; conda activate {conda_env}; cd {run_dir}'.format(
                         conda_sh = os.path.join(exec_conf['myexecutor_1']['CONDA_DIR'], 'etc/profile.d/conda.sh'),
                         conda_env = exec_conf['myexecutor_1']['CONDA_ENV'],
@@ -121,8 +126,14 @@ if __name__ == '__main__':
 
     print('\n\n\nHELLO FROM COMPUTE NODES:', flush = True)
     print('\n\nmyexecutor_1:', flush = True)
-    fut_1 = hello_bash_app_1(
+    fut_1 = hello_srun_1(
         run_dir = exec_conf['myexecutor_1']['RUN_DIR'],
+        slurm_info = {
+            'nodes': exec_conf['myexecutor_1']['NODES'],
+            'partition': exec_conf['myexecutor_1']['PARTITION'],
+            'ntasks_per_node': exec_conf['myexecutor_1']['NTASKS_PER_NODE'],
+            'walltime': exec_conf['myexecutor_1']['WALLTIME']
+        },
         inputs_dict = {
             "test-in-file": {
                 "type": "file",
