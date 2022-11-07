@@ -114,12 +114,12 @@ if __name__ == '__main__':
     print('Loading Parsl Config', flush = True)
     parsl.load(config)
 
-    print('\n\n\nHELLO FROM CONTROLLER NODE:', flush = True)
+    print('\n\n\nHELLO PYTHON APP:', flush = True)
     fut_1 = hello_python_app_1(name = args['name'])
 
     print(fut_1.result())
 
-    print('\n\n\nHELLO FROM COMPUTE NODES:', flush = True)
+    print('\n\n\nHELLO BASH APP:', flush = True)
     print('\n\nmyexecutor_1:', flush = True)
     fut_1 = hello_bash_app_1(
         run_dir = exec_conf['myexecutor_1']['RUN_DIR'],
