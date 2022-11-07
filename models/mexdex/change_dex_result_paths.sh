@@ -31,14 +31,31 @@
 # change_dex_result_paths.sh mdlite_dex /home/user/ /pw/clusters/pool/
 #================================
 
+#================================
 # CLI inputs
-dex_bname=$1
+# Run basename twice in case the .html or .csv file
+# is specified on command line via tab completion
+dex_bname_tmp=$(basename $1 .html)
+dex_bname=$(basename $dex_bname_tmp .csv)
 dex_path_1=$2
 dex_path_2=$3
 
 # Filter for sed
 dex_path_1_for_sed=$(echo $dex_path_1 | sed 's/\//\\\//g')
+dex_path_2_for_sed=$(echo $dex_path_2 | sed 's/\//\\\//g')
 
 # Cross check
 echo Working on ${dex_bname}.html and ${dex_bname}.csv
-echo $dex_path_1_for_sed
+echo Initial path: $dex_path_1 sed filter: $dex_path_1_for_sed
+echo Final path: $dex_path_2 sed filter: $dex_path_2_for_sed
+
+#===============================
+# Make bkup copies and filter
+
+mv ${dex_bname}.html ${dex_bname}.html.old
+mv ${dex_bname}.csv ${dex_bname}.csv.old
+
+sed "s/$dex_path_1_for_sed/$dex_path_2_for_sed/g" ${dex_bname}.html.old > ${dex_bname}.html
+sed "s/$dex_path_1_for_sed/$dex_path_2_for_sed/g" ${dex_bname}.csv.old > ${dex_bname}.csv
+
+# Done!
