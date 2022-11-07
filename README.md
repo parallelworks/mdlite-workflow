@@ -18,6 +18,7 @@ a Jupyter notebook according to the schematic below. ![.](images/mdlite-paramete
 
 ## Contents
 
++ **`cloud.md`:** lists instructions specific to running on cloud clusters.
 + **`./images`:** contains any images to be displayed in the documentation.
 + **`./local-runs`:** contains scripts to faciliate testing the individual steps of the workflow on a local computer.
 + **`./models`:** contains the code and executables for the MD simulation and visulaization apps.
