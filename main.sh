@@ -8,10 +8,10 @@ pudir=parsl_utils #$(dirname $0)
 mkdir -p logs
 rm -rf logs/*
 
-# Use a job_id to:
+# Use a job_number to:
 # 1. Track / cancel job
 # 2. Stage temporary files
-job_id=$(basename ${PWD})   #job-${job_num}_date-$(date +%s)_random-${RANDOM}
+job_number=$(basename ${PWD})   #job-${job_num}_date-$(date +%s)_random-${RANDOM}
 
 #########################################
 # CHECKING AND PREPARING USER CONTAINER #
@@ -38,17 +38,16 @@ conda activate ${CONDA_ENV}
 ############################################
 # CHECKING AND PREPRARING REMOTE EXECUTORS #
 ############################################
-bash ${pudir}/prepare_resources.sh ${job_id} &> logs/prepare_resources.out
+bash ${pudir}/prepare_resources.sh ${job_number} &> logs/prepare_resources.out
 
 ####################
 # SUBMIT PARSL JOB #
 ####################
 echo; echo; echo
 echo "RUNNING PARSL JOB"
-echo
-echo "Input parameters: $@"
+echo "python main.py $@ --job_number ${job_number}"
 # To track and cancel the job
-python main.py $@ --job_id ${job_id}
+python main.py $@ --job_number ${job_number}
 ec=$?
 main_pid=$!
 echo; echo; echo
@@ -64,7 +63,7 @@ bash ${pudir}/clean_resources.sh &> logs/clean_resources.out
 
 # Make super sure python process dies:
 # - Also the monitoring is killed here!
-python_pid=$(ps -x | grep  ${job_id} | grep python | awk '{print $1}')
+python_pid=$(ps -x | grep  ${job_number} | grep python | awk '{print $1}')
 if ! [ -z "${python_pid}" ]; then
     echo "Killing remaining python process ${python_pid}" >> logs/killed_pids.log
     kill ${python_pid}

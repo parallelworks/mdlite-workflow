@@ -75,6 +75,7 @@ def read_args():
 
 if __name__ == '__main__':
     args = read_args()
+    job_number = args['job_number']
 
     # Add sandbox directory
     for exec_label, exec_conf_i in exec_conf.items():
@@ -83,7 +84,7 @@ if __name__ == '__main__':
         else:
             base_dir = '/tmp'
             exec_conf[exec_label]['RUN_DIR'] = os.path.join(base_dir, str(job_number))
-            
+
     config = Config(
         executors = [
             HighThroughputExecutor(

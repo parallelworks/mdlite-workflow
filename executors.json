@@ -1,6 +1,6 @@
 {
     "myexecutor_1": {
-        "POOL": "gcpslurmv2basic",
+        "POOL": "gcpv2",
         "RUN_DIR": "~/parsl-rundir",
         "NODES": 2,
         "PARTITION": "compute",
