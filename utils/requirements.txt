@@ -27,7 +27,7 @@ dill=0.3.6=pyhd8ed1ab_1
 entrypoints=0.4=py310h06a4308_0
 executing=0.8.3=pyhd3eb1b0_0
 expat=2.2.10=h9c3ff4c_0
-flit-core=3.7.1=pyhd8ed1ab_0
+flit-core=3.8.0=pyhd8ed1ab_0
 fontconfig=2.13.1=hef1e5e3_1
 freetype=2.10.4=h0708190_1
 giflib=5.2.1=h36c2ea0_2
@@ -94,11 +94,11 @@ notebook=6.5.2=pyha770c72_1
 notebook-shim=0.2.2=pyhd8ed1ab_0
 nspr=4.33=h295c915_0
 nss=3.74=h0370c37_0
-openssl=1.1.1q=h7f8727e_0
+openssl=1.1.1s=h7f8727e_0
 packaging=21.3=pyhd3eb1b0_0
 pandoc=2.19.2=ha770c72_0
 pandocfilters=1.5.0=pyhd8ed1ab_0
-paramiko=2.11.0=pyhd8ed1ab_0
+paramiko=2.12.0=pyhd8ed1ab_0
 parsl=1.2.0=pyhd8ed1ab_0
 parso=0.8.3=pyhd3eb1b0_0
 pcre=8.45=h9c3ff4c_0

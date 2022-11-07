@@ -99,6 +99,9 @@ conda install -y ipykernel
 conda install -y -c anaconda jinja2
 conda install -y -c conda-forge jupyter
 conda install -y -c conda-forge parsl
+conda install -y -c conda-forge numpy
+conda install -y -c conda-forge pandas
+conda install -y -c conda-forge matplotlib
 
 # Write out the requirements.txt to document environment
 conda list -e > requirements.txt
