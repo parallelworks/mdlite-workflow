@@ -1,0 +1,5 @@
+label, model, seed, is_relaxed, img:model, out:rg, out:plddt, out:3d
+2UBQ,1,2,True,/pw/workflows/mdlite/models/sample_af/predictions/2UBQ_relaxed_model_1_seed1.jpg,[0.94354145],93.14349178249228,/pw/workflows/mdlite/models/sample_af/predictions/2UBQ_relaxed_model_1_seed1.pdb
+2UBQ,1,2,False,/pw/workflows/mdlite/models/sample_af/predictions/2UBQ_unrelaxed_model_1_seed1.jpg,[0.9319809],93.14349178249228,/pw/workflows/mdlite/models/sample_af/predictions/2UBQ_unrelaxed_model_1_seed1.pdb
+2UBQ,1,1,True,/pw/workflows/mdlite/models/sample_af/predictions/2UBQ_relaxed_model_2_seed1.jpg,[0.94356636],93.59886948259057,/pw/workflows/mdlite/models/sample_af/predictions/2UBQ_relaxed_model_2_seed1.pdb
+2UBQ,1,1,False,/pw/workflows/mdlite/models/sample_af/predictions/2UBQ_unrelaxed_model_2_seed1.jpg,[0.93239621],93.59886948259057,/pw/workflows/mdlite/models/sample_af/predictions/2UBQ_unrelaxed_model_2_seed1.pdb

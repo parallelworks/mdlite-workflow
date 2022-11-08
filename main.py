@@ -1,29 +1,14 @@
 import sys, os, json, time
+from os.path import exists
 from random import randint
-import argparse
 
 import parsl
 print(parsl.__version__, flush = True)
 from parsl.app.app import python_app, bash_app
-from parsl.config import Config
-from parsl.channels import SSHChannel
-from parsl.providers import LocalProvider, SlurmProvider
-from parsl.executors import HighThroughputExecutor
 
-from parsl.addresses import address_by_hostname
-#from parsl.monitoring.monitoring import MonitoringHub
+from config import config,exec_conf,read_args
 
 import parsl_utils
-
-with open('executors.json', 'r') as f:
-    exec_conf = json.load(f)
-
-
-for label,executor in exec_conf.items():
-    for k,v in executor.items():
-        if type(v) == str:
-            exec_conf[label][k] = os.path.expanduser(v)
-
 
 # Job runs in directory /pw/jobs/job-number
 job_number = os.path.dirname(os.getcwd().replace('/pw/jobs/', ''))
@@ -40,105 +25,174 @@ def hello_python_app_1(name = '', stdout='std.out', stderr = 'std.err'):
 @parsl_utils.parsl_wrappers.log_app
 @parsl_utils.parsl_wrappers.stage_app(exec_conf['myexecutor_1']['HOST_USER'] + '@' + exec_conf['myexecutor_1']['HOST_IP'])
 @bash_app(executors=['myexecutor_1'])
-def hello_bash_app_1(run_dir, inputs_dict = {}, outputs_dict = {}, stdout='std.out', stderr = 'std.err'):
+def md_run(rundir, case, inputs_dict = {}, outputs_dict = {}, stdout='md.run.stdout', stderr='md.run.stderr'):
     return '''
-        cd {run_dir}
-        cat {hello_in} > {hello_out}
-        echo $SLURM_JOB_NODELIST >> {hello_out}
+    echo running mdlite in $rundir
+    mkdir -p {rundir} && cd {rundir}
+    chmod +x runMD.sh
+    mkdir -p {outdir} && cd {outdir}
+    ../runMD.sh "{case}" metric.out trj.out
     '''.format(
-        run_dir = run_dir,
-        hello_in = inputs_dict["test-in-file"]["worker_path"],
-        hello_out = outputs_dict["test-out-file"]["worker_path"],
+        rundir=rundir,
+        case=case,
+        outdir=outputs_dict['results']['worker_path']
     )
 
-def read_args():
-    parser=argparse.ArgumentParser()
-    parsed, unknown = parser.parse_known_args()
-    for arg in unknown:
-        if arg.startswith(("-", "--")):
-            parser.add_argument(arg)
-    pwargs=vars(parser.parse_args())
-    print(pwargs)
-    return pwargs
+#===================================
+# App to render frames for animation
+#===================================
+# All frames for a given simulation
+# are rendered together.
+
+# This app takes a very simple
+# approach to zero padding by adding
+# integers to 1000.
+@parsl_utils.parsl_wrappers.log_app
+@parsl_utils.parsl_wrappers.stage_app(exec_conf['myexecutor_1']['HOST_USER'] + '@' + exec_conf['myexecutor_1']['HOST_IP'])
+@bash_app(executors=['myexecutor_1'])
+def md_vis(rundir, nframe, inputs_dict={}, outputs_dict={}, stdout='md.vis.stdout', stderr='md.vis.stderr'):
+    return '''
+    echo running {nframe} c-ray in {rundir}
+    mkdir -p {rundir} && cd {rundir}
+    indir="{indir}"
+    outdir="{outdir}"
+    rm -f $outdir && mkdir -p $outdir
+    chmod +x *
+    for (( ff=0; ff<{nframe}; ff++ ))
+    do
+        frame_num_padded=$((1000+$ff))
+        ./renderframe_shared_fs $indir/trj.out $outdir/f_$frame_num_padded.ppm $ff
+    done
+    '''.format(
+        rundir=rundir,
+        nframe=nframe,
+        indir=inputs_dict['md-results']['worker_path'],
+        outdir=outputs_dict['results']['worker_path']
+    )
 
 if __name__ == '__main__':
     args = read_args()
     job_number = args['job_number']
 
-    # Add sandbox directory
-    for exec_label, exec_conf_i in exec_conf.items():
-        if 'RUN_DIR' in exec_conf_i:
-            exec_conf[exec_label]['RUN_DIR'] = os.path.join(exec_conf_i['RUN_DIR'])
-        else:
-            base_dir = '/tmp'
-            exec_conf[exec_label]['RUN_DIR'] = os.path.join(base_dir, str(job_number))
-
-    config = Config(
-        executors = [
-            HighThroughputExecutor(
-                worker_ports = ((int(exec_conf['myexecutor_1']['WORKER_PORT_1']), int(exec_conf['myexecutor_1']['WORKER_PORT_2']))),
-                label = 'myexecutor_1',
-                worker_debug = True,             # Default False for shorter logs
-                cores_per_worker = float(exec_conf['myexecutor_1']['CORES_PER_WORKER']), # One worker per node
-                worker_logdir_root = exec_conf['myexecutor_1']['WORKER_LOGDIR_ROOT'],  #os.getcwd() + '/parsllogs',
-                address = exec_conf['myexecutor_1']['ADDRESS'],
-                provider = SlurmProvider(
-                    partition = exec_conf['myexecutor_1']['PARTITION'],
-                    nodes_per_block = int(exec_conf['myexecutor_1']['NODES']),
-                    cores_per_node = int(exec_conf['myexecutor_1']['NTASKS_PER_NODE']),
-                    min_blocks = int(exec_conf['myexecutor_1']['MIN_BLOCKS']),
-                    max_blocks = int(exec_conf['myexecutor_1']['MAX_BLOCKS']),
-                    walltime = exec_conf['myexecutor_1']['WALLTIME'],
-                    worker_init = 'source {conda_sh}; conda activate {conda_env}; cd {run_dir}'.format(
-                        conda_sh = os.path.join(exec_conf['myexecutor_1']['CONDA_DIR'], 'etc/profile.d/conda.sh'),
-                        conda_env = exec_conf['myexecutor_1']['CONDA_ENV'],
-                        run_dir = exec_conf['myexecutor_1']['RUN_DIR']
-                    ),
-                    channel = SSHChannel(
-                        hostname = exec_conf['myexecutor_1']['HOST_IP'],
-                        username = exec_conf['myexecutor_1']['HOST_USER'],
-                        script_dir = exec_conf['myexecutor_1']['SSH_CHANNEL_SCRIPT_DIR'], # Full path to a script dir where generated scripts could be sent to
-                        key_filename = '/home/{PW_USER}/.ssh/pw_id_rsa'.format(PW_USER = os.environ['PW_USER'])
-                    )
-                )
-            )
-        ]
-    )
-    #,
-    #    monitoring = MonitoringHub(
-    #       hub_address = address_by_hostname(),
-    #       resource_monitoring_interval = 5
-    #   )
-    #)
-
     print('Loading Parsl Config', flush = True)
     parsl.load(config)
 
-    print('\n\n\nHELLO PYTHON APP:', flush = True)
-    fut_1 = hello_python_app_1(name = args['name'])
+    # print('\n\n\nHELLO PYTHON APP:', flush = True)
+    # fut_1 = hello_python_app_1(name = args['name'])
+    # print(fut_1.result())
 
-    print(fut_1.result())
+    if (exists("./params.run")):
+        print("Running from a PW form.")
 
-    print('\n\n\nHELLO BASH APP:', flush = True)
-    print('\n\nmyexecutor_1:', flush = True)
-    fut_1 = hello_bash_app_1(
-        run_dir = exec_conf['myexecutor_1']['RUN_DIR'],
-        inputs_dict = {
-            "test-in-file": {
-                "type": "file",
-                "global_path": "pw://{cwd}/hello_srun.in",
-                "worker_path": "{remote_dir}/hello_srun.in".format(remote_dir =  exec_conf['myexecutor_1']['RUN_DIR'])
-            }
-        },
-        outputs_dict = {
-            "test-out-file": {
-                "type": "file",
-                "global_path": "pw://{cwd}/hello_srun-1.out",
-                "worker_path": "{remote_dir}/hello_srun-1.out".format(remote_dir =  exec_conf['myexecutor_1']['RUN_DIR'])
-            }
-        },
-        stdout = os.path.join(exec_conf['myexecutor_1']['RUN_DIR'], 'std.out'),
-        stderr = os.path.join(exec_conf['myexecutor_1']['RUN_DIR'], 'std.err')
-    )
+    else:
+        print("Running from a local dir.")
 
-    print(fut_1.result())
+        # Manually set workflow inputs here (same as the
+        # default values in workflow launch form)
+        # The ranges of EACH dimension in the parameter
+        # sweep are defined by the format:
+        #
+        # NAME;input;MIN:MAX:STEP
+        #
+        #=========================================
+        # npart = number of particles
+        # steps = time steps in simulation
+        # mass = mass of partiles
+        # trsnaps = number of frames ("snapshots") of simulation for animation
+        #=========================================
+        params="npart;input;25:50:25|steps;input;3000:6000:3000|mass;input;0.01:0.02:0.01|trsnaps;input;5:10:5|"
+
+        print(params)
+
+        # Write to params.run
+        with open("params.run","w") as f:
+            n_char_written = f.write(params+"\n")
+
+    os.system("python ./models/mexdex/prepinputs.py params.run cases.list")
+
+    # Each line in cases.list is a unique combination of the parameters to sweep.
+    with open("cases.list","r") as f:
+        cases_list = f.readlines()
+
+    #============================================================================
+    # SIMULATE
+    #============================================================================
+    # For each line in cases.list, run and visualize a molecular dynamics simulation
+    # These empty lists will store the futures of Parsl-parallelized apps.
+    # Use Path for staging because multiple files in ./models/mdlite are needed
+    # and mutliple files in ./results/case_*/md are sent back to the platform.
+    md_run_fut = []
+    for ii, case in enumerate(cases_list):
+        fut_1 = md_run(
+            rundir = exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii),
+            case=case,
+            inputs_dict = {
+                "model": {
+                    "type": "file",
+                    "global_path": "pw://{cwd}/models/mdlite/*",
+                    "worker_path": "{remote_dir}".format(remote_dir =  exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii))
+                }
+            },
+            outputs_dict = {
+                "results": {
+                    "type": "directory",
+                    "global_path": "pw://{cwd}/results/case_"+str(ii)+'/mdlite',
+                    "worker_path": "{remote_dir}/mdlite".format(remote_dir =  exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii))
+                }
+            },
+            stdout = os.path.join(exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii), 'std.out'),
+            stderr = os.path.join(exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii), 'std.err')
+        )
+
+        md_run_fut.append(fut_1)
+
+    for run in md_run_fut:
+        run.result()
+
+    #============================================================================
+    # VISUALIZE
+    #============================================================================
+    md_vis_fut = []
+    for ii, case in enumerate(cases_list):
+        # Get number of frames to render for this case
+        nframe = int(case.split(',')[4])
+
+        fut_2 = md_vis(
+            rundir = exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii),
+            nframe=nframe,
+            inputs_dict = {
+                "model": {
+                    "type": "file",
+                    "global_path": "pw://{cwd}/models/c-ray/*",
+                    "worker_path": "{remote_dir}".format(remote_dir =  exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii))
+                },
+                "md-results": {
+                    "type": "directory",
+                    "global_path": "pw://{cwd}/results/case_"+str(ii)+"/mdlite",
+                    "worker_path": "{remote_dir}/mdlite".format(remote_dir =  exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii))
+                }
+            },
+            outputs_dict = {
+                "results": {
+                    "type": "directory",
+                    "global_path": "pw://{cwd}/results/case_"+str(ii)+'/viz',
+                    "worker_path": "{remote_dir}/viz".format(remote_dir =  exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii))
+                }
+            },
+            stdout = os.path.join(exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii), 'std.out'),
+            stderr = os.path.join(exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii), 'std.err')
+        )
+
+        md_vis_fut.append(fut_2)
+
+    for vis in md_vis_fut:
+        vis.result()
+
+    print("Tasks completed - compiling frames into animations...")
+
+    # Compile frames into movies locally
+    for ii, case in enumerate(cases_list):
+        os.system("cd ./results/case_"+str(ii)+"/viz; convert -delay 10 *.ppm mdlite.gif")
+
+    # Compile movies into Design Explorer results locally
+    os.system("./models/mexdex/postprocess.sh mdlite_dex.csv mdlite_dex.html ./")
