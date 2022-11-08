@@ -5,6 +5,9 @@ date
 pudir=parsl_utils #$(dirname $0)
 . ${pudir}/utils.sh
 
+# Copy the kill file
+cp parsl_utils/kill.sh ./
+
 # Clear logs
 mkdir -p logs
 rm -rf logs/*
