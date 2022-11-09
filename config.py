@@ -39,6 +39,7 @@ selectedExecutor = None
 
 if rc != 0:
     print('parslpw: error: can not parse parsl.swift.conf. rc={} output={}'.format(rc,output))
+    selectedExecutor='googlecloud'
 else:
     pools=[]
     poolinfo={}
@@ -82,28 +83,28 @@ for exec_label, exec_conf_i in exec_conf.items():
 config = Config(
     executors = [
         HighThroughputExecutor(
-            worker_ports = ((int(exec_conf['myexecutor_1']['WORKER_PORT_1']), int(exec_conf['myexecutor_1']['WORKER_PORT_2']))),
-            label = 'myexecutor_1',
+            worker_ports = ((int(exec_conf[selectedExecutor]['WORKER_PORT_1']), int(exec_conf[selectedExecutor]['WORKER_PORT_2']))),
+            label = selectedExecutor,
             worker_debug = True,             # Default False for shorter logs
-            cores_per_worker = float(exec_conf['myexecutor_1']['CORES_PER_WORKER']), # One worker per node
-            worker_logdir_root = exec_conf['myexecutor_1']['WORKER_LOGDIR_ROOT'],  #os.getcwd() + '/parsllogs',
-            address = exec_conf['myexecutor_1']['ADDRESS'],
+            cores_per_worker = float(exec_conf[selectedExecutor]['CORES_PER_WORKER']), # One worker per node
+            worker_logdir_root = exec_conf[selectedExecutor]['WORKER_LOGDIR_ROOT'],  #os.getcwd() + '/parsllogs',
+            address = exec_conf[selectedExecutor]['ADDRESS'],
             provider = SlurmProvider(
-                partition = exec_conf['myexecutor_1']['PARTITION'],
-                nodes_per_block = int(exec_conf['myexecutor_1']['NODES_PER_BLOCK']),
-                cores_per_node = int(exec_conf['myexecutor_1']['NTASKS_PER_NODE']),
-                min_blocks = int(exec_conf['myexecutor_1']['MIN_BLOCKS']),
-                max_blocks = int(exec_conf['myexecutor_1']['MAX_BLOCKS']),
-                walltime = exec_conf['myexecutor_1']['WALLTIME'],
+                partition = exec_conf[selectedExecutor]['PARTITION'],
+                nodes_per_block = int(exec_conf[selectedExecutor]['NODES_PER_BLOCK']),
+                cores_per_node = int(exec_conf[selectedExecutor]['NTASKS_PER_NODE']),
+                min_blocks = int(exec_conf[selectedExecutor]['MIN_BLOCKS']),
+                max_blocks = int(exec_conf[selectedExecutor]['MAX_BLOCKS']),
+                walltime = exec_conf[selectedExecutor]['WALLTIME'],
                 worker_init = 'source {conda_sh}; conda activate {conda_env}; cd {run_dir}'.format(
-                    conda_sh = os.path.join(exec_conf['myexecutor_1']['CONDA_DIR'], 'etc/profile.d/conda.sh'),
-                    conda_env = exec_conf['myexecutor_1']['CONDA_ENV'],
-                    run_dir = exec_conf['myexecutor_1']['RUN_DIR']
+                    conda_sh = os.path.join(exec_conf[selectedExecutor]['CONDA_DIR'], 'etc/profile.d/conda.sh'),
+                    conda_env = exec_conf[selectedExecutor]['CONDA_ENV'],
+                    run_dir = exec_conf[selectedExecutor]['RUN_DIR']
                 ),
                 channel = SSHChannel(
-                    hostname = exec_conf['myexecutor_1']['HOST_IP'],
-                    username = exec_conf['myexecutor_1']['HOST_USER'],
-                    script_dir = exec_conf['myexecutor_1']['SSH_CHANNEL_SCRIPT_DIR'], # Full path to a script dir where generated scripts could be sent to
+                    hostname = exec_conf[selectedExecutor]['HOST_IP'],
+                    username = exec_conf[selectedExecutor]['HOST_USER'],
+                    script_dir = exec_conf[selectedExecutor]['SSH_CHANNEL_SCRIPT_DIR'], # Full path to a script dir where generated scripts could be sent to
                     key_filename = '/home/{PW_USER}/.ssh/pw_id_rsa'.format(PW_USER = os.environ['PW_USER'])
                 )
             )
