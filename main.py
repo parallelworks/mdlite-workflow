@@ -6,16 +6,21 @@ import parsl
 print(parsl.__version__, flush = True)
 from parsl.app.app import python_app, bash_app
 
-from config import config,exec_conf,read_args
+from config import config,exec_conf,read_args,selectedExecutor
 
 import parsl_utils
 
 # Job runs in directory /pw/jobs/job-number
 job_number = os.path.dirname(os.getcwd().replace('/pw/jobs/', ''))
 
+if selectedExecutor == None:
+    EXECUTOR='googlecloud'
+else:
+    EXECUTOR=selectedExecutor
+
 # PARSL APPS:
 @parsl_utils.parsl_wrappers.log_app
-@python_app(executors=['myexecutor_1'])
+@python_app(executors=[EXECUTOR])
 def hello_python_app_1(name = '', stdout='std.out', stderr = 'std.err'):
     import socket
     if not name:
@@ -23,8 +28,8 @@ def hello_python_app_1(name = '', stdout='std.out', stderr = 'std.err'):
     return 'Hello ' + name + ' from ' + socket.gethostname()
 
 @parsl_utils.parsl_wrappers.log_app
-@parsl_utils.parsl_wrappers.stage_app(exec_conf['myexecutor_1']['HOST_USER'] + '@' + exec_conf['myexecutor_1']['HOST_IP'])
-@bash_app(executors=['myexecutor_1'])
+@parsl_utils.parsl_wrappers.stage_app(exec_conf[EXECUTOR]['HOST_USER'] + '@' + exec_conf[EXECUTOR]['HOST_IP'])
+@bash_app(executors=[EXECUTOR])
 def md_run(rundir, case, inputs_dict = {}, outputs_dict = {}, stdout='md.run.stdout', stderr='md.run.stderr'):
     return '''
     echo running mdlite in $rundir
@@ -48,8 +53,8 @@ def md_run(rundir, case, inputs_dict = {}, outputs_dict = {}, stdout='md.run.std
 # approach to zero padding by adding
 # integers to 1000.
 @parsl_utils.parsl_wrappers.log_app
-@parsl_utils.parsl_wrappers.stage_app(exec_conf['myexecutor_1']['HOST_USER'] + '@' + exec_conf['myexecutor_1']['HOST_IP'])
-@bash_app(executors=['myexecutor_1'])
+@parsl_utils.parsl_wrappers.stage_app(exec_conf[EXECUTOR]['HOST_USER'] + '@' + exec_conf[EXECUTOR]['HOST_IP'])
+@bash_app(executors=[EXECUTOR])
 def md_vis(rundir, nframe, inputs_dict={}, outputs_dict={}, stdout='md.vis.stdout', stderr='md.vis.stderr'):
     return '''
     echo running {nframe} c-ray in {rundir}
@@ -124,24 +129,24 @@ if __name__ == '__main__':
     md_run_fut = []
     for ii, case in enumerate(cases_list):
         fut_1 = md_run(
-            rundir = exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii),
+            rundir = exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii),
             case=case,
             inputs_dict = {
                 "model": {
                     "type": "file",
                     "global_path": "pw://{cwd}/models/mdlite/*",
-                    "worker_path": "{remote_dir}".format(remote_dir =  exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii))
+                    "worker_path": "{remote_dir}".format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
                 }
             },
             outputs_dict = {
                 "results": {
                     "type": "directory",
                     "global_path": "pw://{cwd}/results/case_"+str(ii)+'/mdlite',
-                    "worker_path": "{remote_dir}/mdlite".format(remote_dir =  exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii))
+                    "worker_path": "{remote_dir}/mdlite".format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
                 }
             },
-            stdout = os.path.join(exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii), 'std.out'),
-            stderr = os.path.join(exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii), 'std.err')
+            stdout = os.path.join(exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii), 'std.out'),
+            stderr = os.path.join(exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii), 'std.err')
         )
 
         md_run_fut.append(fut_1)
@@ -158,29 +163,29 @@ if __name__ == '__main__':
         nframe = int(case.split(',')[4])
 
         fut_2 = md_vis(
-            rundir = exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii),
+            rundir = exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii),
             nframe=nframe,
             inputs_dict = {
                 "model": {
                     "type": "file",
                     "global_path": "pw://{cwd}/models/c-ray/*",
-                    "worker_path": "{remote_dir}".format(remote_dir =  exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii))
+                    "worker_path": "{remote_dir}".format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
                 },
                 "md-results": {
                     "type": "directory",
                     "global_path": "pw://{cwd}/results/case_"+str(ii)+"/mdlite",
-                    "worker_path": "{remote_dir}/mdlite".format(remote_dir =  exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii))
+                    "worker_path": "{remote_dir}/mdlite".format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
                 }
             },
             outputs_dict = {
                 "results": {
                     "type": "directory",
                     "global_path": "pw://{cwd}/results/case_"+str(ii)+'/viz',
-                    "worker_path": "{remote_dir}/viz".format(remote_dir =  exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii))
+                    "worker_path": "{remote_dir}/viz".format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
                 }
             },
-            stdout = os.path.join(exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii), 'std.out'),
-            stderr = os.path.join(exec_conf['myexecutor_1']['RUN_DIR'] + '/' + str(ii), 'std.err')
+            stdout = os.path.join(exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii), 'std.out'),
+            stderr = os.path.join(exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii), 'std.err')
         )
 
         md_vis_fut.append(fut_2)

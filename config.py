@@ -4,8 +4,54 @@ from parsl.providers import LocalProvider, SlurmProvider
 from parsl.executors import HighThroughputExecutor
 #from parsl.monitoring.monitoring import MonitoringHub
 from parsl.addresses import address_by_hostname
-import os,json
-import argparse
+import os,json,argparse,subprocess
+
+debug = False
+
+def bash(script,*args,checkrc=False,debug=False):
+
+    cmd = ['bash', '-s', *args]
+
+    result = subprocess.run(cmd, input=script, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding='utf-8')
+    if debug: print('DB: bash(): subprocess.run returned: ' + str(result))
+
+    rc = result.returncode
+    if debug:  print('DB: bash(): command exit code: ' + str(rc))
+
+    cmd_output = result.stdout
+    if debug: print('DB: bash(): command output: ' + str(cmd_output))
+
+    return (rc, cmd_output)
+
+pw_conf      = 'pw.conf'
+script = r'''
+set -o pipefail
+sed -e 's/{{//g;s/}}//g;s/"//g;s/: / /;s/^ +//' < {0} |
+    awk '
+        /^site\./   {{ gsub(/^site./,"",$1); site=$1 }}
+        /  URL/     {{ print(site " " $2) }}
+        '
+'''.format(pw_conf)   # FIXME: Convert to python???
+
+(rc,output) = bash(script)
+
+selectedExecutor = None
+
+if rc != 0:
+    print('parslpw: error: can not parse parsl.swift.conf. rc={} output={}'.format(rc,output))
+else:
+    pools=[]
+    poolinfo={}
+    for line in output.splitlines():
+        fields = line.split()
+        poolname = fields[0]
+        service = fields[1].split(':')
+        host = service[1][2:] # skip over // from protocol
+        port = service[2]
+        pools.append(poolname)
+        poolinfo[poolname]={'host':host,'port':port}
+    selectedExecutor=pools[0]
+    print('EXECUTOR SELECTED',selectedExecutor)
 
 def read_args():
     parser=argparse.ArgumentParser()
