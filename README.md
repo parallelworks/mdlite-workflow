@@ -1,78 +1,125 @@
-# Single Cluster Parsl Hello World
-This workflow is a "hello world" example using Parsl to connect to remote resources with the [SSHChannel](https://parsl.readthedocs.io/en/stable/stubs/parsl.channels.SSHChannel.html). It uses the [parsl_utils](https://github.com/parallelworks/parsl_utils) repository for integration with the PW platform. The purpose of this workflow is to:
-1. Test new resources and resource configurations before launching more complex workflows
-2. Use as template to develop more complex workflows
+# MDLITE: A lightweight Molecular Dynamics demonstration
 
-The workflow executes a python app and a bash app:
+MDLite is a small, portable molecular dynamics (MD) parameter sweep workflow
+with no dependencies other than Parsl, ImageMagick, and the executables
+distributed with the workflow. (Furthermore, ImageMagick is only required
+on the host, the computer that initiates the workflow, not on the remote
+workers.) Since the PW platform can automatically copy Parsl to remote
+workers, these minimal dependencies allow this workflow to run on any
+resource.  The parameter sweep outputs are visualized in the Design
+Explorer. The entire workflow is embedded in a Jupyter notebook with
+substantial supporting documentation; this workflow is an ideal
+starting point for new users and a possible template for building
+custom workflows with topologies similar to parameter sweeps.
 
-**Python App:**
-Returns the host name of the controller node as a Python object and prints it to the standard output (`/pw/jobs/job_number/std.out`). Also returns the input parameter name.
+The workflow is orchestrated with the
+[Parsl parallel scripting library](https://parsl-project.org/) via
+a Jupyter notebook according to the schematic below. ![.](images/mdlite-parameter-sweep.png)
 
-**Bash App:**
-Sends the file `./hello_srun.in` to the controller node, writes the host names of the compute nodes in it and returns it back to the job directory (`/pw/jobs/job_number/hello_srun-1.out`).
+## Contents
 
-## Configuration:
-The workflow configuration is defined in the files `./executors.json` and `./local.conf`:
++ **`cloud.md`:** lists instructions specific to running on cloud clusters.
++ **`./images`:** contains any images to be displayed in the documentation.
++ **`./local-runs`:** contains scripts to faciliate testing the individual steps of the workflow on a local computer.
++ **`./models`:** contains the code and executables for the MD simulation and visulaization apps.
++ **`./utils`:** contains helper utilities to streamline the workflow code.
++ **`main.ipynb`:** is the Jupyter notebook that contains the workflow code.
++ **`workflow.xml`:** is the file that defines the workflow launch form when clicking on the MDLite workflow card on the left column of the `Compute` tab.
 
-### Executors JSON:
-Defines the configuration of the remote resources and is located in the workflow's directory `/pw/workflows/workflow_name`. This file contains all the information to define the Parsl Config object in the main script. The higher level key needs to match the label parameter in the Parsl Config and in the Parsl app decorators:
+## Installation
 
-```
-# PARSL CONFIG
-config = Config(
-        executors = [
-            HighThroughputExecutor(
-                worker_ports = ((int(exec_conf['myexecutor_1']['WORKER_PORT_1']), int(exec_conf['myexecutor_1']['WORKER_PORT_2']))),
-                label = 'myexecutor_1',
-                # ...
-```
+This workflow can be added to your PW account from the PW marketplace
+(globe icon in upper right corner).  It is also possible to install this
+workflow directly from its [GitHub repository](https://github.com/parallelworks/mdlite-workflow)
+with the following steps:
 
-
-```
-# PARSL APP
-@python_app(executors=['myexecutor_1'])
-def hello_python_app_1(stdout='std.out', stderr = 'std.err'):
-    # ...
-```
-
-The configuration of the executor is defined using key-value pairs. The specific key-value pairs depend on the Parsl configuration file and may change for every workflow. Also, the same workflow may use different key-value pairs, for example, to run Python in a Singularity container or a Miniconda environment. In this example:
-
-```
-{
-    "myexecutor_1": {
-        "POOL": "Name of the PW pool",
-        "HOST_USER": "User name in the controller node. Defaults to PW user name",
-        "HOST_IP": "IP of the controller node. Defaults to the IP reported by the PW API",
-        "RUN_DIR": "Scratch directory for Parsl jobs and logs",
-        "NODES": "Number of compute nodes",
-        "PARTITION": "Name of the compute node partition",
-        "NTASKS_PER_NODE": "NTASKS_PER_NODE parameter in srun command",
-        "WALLTIME": "Wall time in srun command",
-        "CONDA_ENV": "Name of the Conda environment in the controller node",
-        "CONDA_DIR": "Path to the Conda directory in the controller node",
-        "WORKER_LOGDIR_ROOT": "Path to worker log directory",
-        "SSH_CHANNEL_SCRIPT_DIR": "Path to SSHChannel script directory",
-        "CORES_PER_WORKER": "Number of cores per worker in the head node",
-        "INSTALL_CONDA": "true or false. If true, attempts to set up the Conda environment in the controller node",
-        "LOCAL_CONDA_YAML": "Local path to the Conda YAML file defining the environment. This file is used to set up the Conda environment in the controller node if INSTALL_CONDA is true"
-    }
-}
+1. Create a new workflow by navigating to the `Workflows` tab and `Add Workflow` (select a `Parsl Notebook` workflow).
+2. A new directory `/pw/workflows/<new_workflow_name>` is created.  Delete all the files that are prepopulated in this directory.
+3. In the now empty PW workflow directory (do not forget the .):
+```bash
+git clone https://github.com/parallelworks/gromacs_solvate_membrane .
 ```
 
-This file is completed automatically by the parsl_utils repository to include two worker ports (and the `HOST_USER` and `HOST_IP` parameters if not specified) and written to the job directory (`/pw/jobs/job_number/executors.json`)
+## General Setup
 
-### PW Conf:
-Defines the configuration parameters of the user container in the PW account:
+Configure the compute resource you would like to use with this
+workflow on the `Resources` tab.  This workflow can run on a
+wide range of resources, including the default configuration
+for a cloud worker.
 
-```
-CONDA_ENV="Name of Conda environment in the user container to activate before running the main Python script."
-CONDA_DIR="Path to the Conda directory in the user container"
-INSTALL_CONDA="true or false. If true, attempts to set up the Conda environment in the user container"
-LOCAL_CONDA_YAML="Local path to the Conda YAML file defining the environment. This file is used to set up the Conda environment in the user container if INSTALL_CONDA is true"
-```
+## Optional installation tips
 
-## Python Environments:
-The same version of Parsl must be installed in the Python environment of the user container and of the executors. The user may set the environments manually or may use Conda YAML definition files. In this example these files are provided in the `./requirements` directory. The parsl_utils repository also supports using singularity files (instead of Conda YAML files) and singularity container (instead of Conda environments) to define the Python environment in the remote resources.
+By default, the PW platform will install Parsl on a remote resource
+(either a cloud worker or on-premise cluster worker).  This can add
+a minute or more to the workflow start, so it can be bypassed by
+preinstalling Parsl on cloud worker images or on an on-premise
+cluster.
 
-## Github
-TODO
+### Preinstalling Parsl on an on-premise cluster
+
+To pre-install your `.miniconda3` on an on-premise cluster, use
+a shared space such as `/scratch` as the workflow work directory
+and a place to hold `.miniconda3`.  To copy the Conda installation
+on the PW platform:
+1. ensure `/pw/.packs` already exists (e.g. `mkdir -p /pw/.packs`),
+2. run `pwpack` (takes a few minutes) to create an archive of the Conda installation,
+3. copy (e.g. scp) `/pw/.packs/miniconda3.tgz` to a shared space on the cluster,
+4. decompress the Conda package (e.g. `tar -xvzf miniconda3.tgz`),
+5. use `./utils/update_conda_path.sh` as a template for updating the Conda paths.
+(These are the steps that are automatically executed if a Conda installation is
+not present.)
+
+On the PW platform, the resource's settings under the `Workflow` tab
+needs to be:
+Work Dir: /scratch/sfg3866/pworks
+
+### Preinstalling Parsl on a cloud worker
+
+The `worker-ocean-parcels-13` image already has a `.miniconda3` directory
+loaded in `/var/lib/pworks`.  The PW platform knows to look in that location
+for an existing `.miniconda3`.  In this case, the worker start up scripts
+will update the Conda paths in `/var/lib/pworks/.miniconda3`.
+
+## Running the workflow
+
+Users can run this workflow from either the workflow form or directly from
+the Jupyter notebook.  In either case, please first start the resource
+to be used with with workflow with the On/Off button on the `Compute` tab.
+
+### Running from a workflow form
+
+Once the resource is turned on, in the `Compute` tab, click on the `MDLITE`
+card in the left column of the PW platform.  This will open a form (whose content
+is entirely controlled by `workflow.xml` in this folder) that will allow the
+user to specify ranges and steps of the four parameters that can be adjusted
+in this molecular dynamics simulation.  The format for the parameters is
+`start:stop:step` and it is also possible to enter a single value. Once the
+parameters are entered, click on the `Execute` button.  A new folder at
+`/pw/jobs/<job_id>` will be created in the user's file system (right column)
+that will store a copy of all workflow files, logs, and results.
+
+The default form inputs will start 16 cases and with the default resources
+and 16 worker nodes, will take about 3 minutes to complete.  The key outputs
+are in `/pw/jobs/<job_id>/results` and are quickly visualized in the
+Design Explorer by double clicking on `/pw/jobs/<job_id>/mdlite_dex.html`.
+
+### Running directly within the Jupyter notebook
+
+The entirety of this workflow is orchestrated in a Jupyter notebook,
+`main.ipynb`.  The PW platform is notebook aware so this notebook is
+rendered by double clicking on the file from the file list on the right
+side of the PW platform `Compute` tab. The workflow is executed by
+executing the cells in the notebook.  (Note that the last cell cleans
+up after the workfow is run, including the results!)
+
+In order to run jobs on remote resources, Parsl must be presented with
+the correct configuration in the notebook.  This configuration is in the
+form of `pw.conf`, which must be located in the same directory as `main.ipynb`.
+`pw.conf` can be obtained at least two ways:
+1. from a job directory of a run that was started with a form (see previous section) as long as the compute resource has not been turned off and back on again, or
+2. from the `Workflows` tab, select the MDLITE card (this workflow), select the `Resources` subtab, and the `Preview` subsubtab.  The text displayed here is the content of `pw.conf`.
+
+Running from a notebook directly is different than running from the
+PW platform forms because notebook runs will not create a new directory
+in `/pw/jobs`.  Instead, all file staging happens in the directory that
+`main.ipynb` is running from.
