@@ -81,7 +81,11 @@ for exec_label, exec_conf_i in exec_conf.items():
         exec_conf[exec_label]['RUN_DIR'] = os.path.join(base_dir, str(job_number))
 
 if 'CORES_PER_NODE' in exec_conf[selectedExecutor]:
-    cores_per_node = exec_conf[selectedExecutor]['CORES_PER_NODE']
+    try:
+        cores_per_node = int(exec_conf[selectedExecutor]['CORES_PER_NODE'])
+    except:
+        print('Setting cores_per_node to None')
+        cores_per_node = None
 else:
     cores_per_node = None
         
