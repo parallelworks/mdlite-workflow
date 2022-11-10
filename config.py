@@ -80,6 +80,11 @@ for exec_label, exec_conf_i in exec_conf.items():
         base_dir = '/tmp'
         exec_conf[exec_label]['RUN_DIR'] = os.path.join(base_dir, str(job_number))
 
+if 'CORES_PER_NODE' in exec_conf[selectedExecutor]:
+    cores_per_node = exec_conf[selectedExecutor]['CORES_PER_NODE']
+else:
+    cores_per_node = None
+        
 config = Config(
     executors = [
         HighThroughputExecutor(
@@ -92,7 +97,7 @@ config = Config(
             provider = SlurmProvider(
                 partition = exec_conf[selectedExecutor]['PARTITION'],
                 nodes_per_block = int(exec_conf[selectedExecutor]['NODES_PER_BLOCK']),
-                cores_per_node = int(exec_conf[selectedExecutor]['NTASKS_PER_NODE']),
+                cores_per_node = cores_per_node,
                 min_blocks = int(exec_conf[selectedExecutor]['MIN_BLOCKS']),
                 max_blocks = int(exec_conf[selectedExecutor]['MAX_BLOCKS']),
                 walltime = exec_conf[selectedExecutor]['WALLTIME'],
