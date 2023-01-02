@@ -1,0 +1,8 @@
+{
+    "repo": "https://github.com/parallelworks/mdlite-workflow.git",
+    "branch": "main",
+    "dir": ".",
+    "xml": "workflow.xml",
+    "thumbnail": "workflow/thumbnails/mdlite.png",
+    "readme": "README.md"
+}
