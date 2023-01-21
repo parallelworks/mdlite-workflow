@@ -1,5 +1,5 @@
 <tool id='nyu1_mdlite' name='nyu1_mdlite'>
-  <command interpreter='parsl-nb'>main.ipynb</command>
+  <command interpreter='bash'>workflow_form_launcher.sh</command>
   <inputs>
     <section name='geometry' type='section' title='Runtime Parameters' expanded='true'>
       <param name='npart' label='Number of Particles' type='text' value='25:50:25' width='50%' help='Whitespace delimited or range/step (e.g. min:max:step)' argument='input'></param>
