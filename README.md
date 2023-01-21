@@ -1,5 +1,10 @@
 # MDLITE: A lightweight Molecular Dynamics demonstration
 
+**coaster-pools** BRANCH - This branch is for archiving the
+status of the "Classic Pools" approach to using `parsl-pw` with
+MDLite. Future development for <cluster|pool> integration with
+Parsl workflow fabric will use `parsl_utils`.
+
 MDLite is a small, portable molecular dynamics (MD) parameter sweep workflow
 with no dependencies other than Parsl, ImageMagick, and the executables
 distributed with the workflow. (Furthermore, ImageMagick is only required
