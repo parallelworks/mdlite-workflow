@@ -1,0 +1,17 @@
+#!/bin/bash
+#====================
+# Local Conda config for parsl-utils
+#
+# Workflow execution explicitly checks
+# for presence of this files and fails
+# without file. This file can be in
+# added alongside the github.json file
+# in the workflow directory for GitHub
+# synced workflows.
+#====================
+
+export CONDA_DIR=/pw/.miniconda3/
+export CONDA_ENV=parsl-1.2
+export LOCAL_CONDA_YAML="./requirements/conda_env_local.yaml"
+export INSTALL_CONDA=true
+
