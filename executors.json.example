@@ -4,7 +4,7 @@
     "PROVIDER_TYPE": "LOCAL",
     "CONDA_ENV": "parsl-1.2",
     "CONDA_DIR": "__POOLWORKDIR__/pw/.miniconda3",
-    "CORES_PER_WORKER": 0.1,
+    "CORES_PER_WORKER": 1,
     "INSTALL_CONDA": "true",
     "LOCAL_CONDA_YAML": "./requirements/conda_env_remote.yaml",
     "SlurmProvider": {
@@ -21,7 +21,7 @@
     "PROVIDER_TYPE": "LOCAL",
     "CONDA_ENV": "parsl-1.2",
     "CONDA_DIR": "__POOLWORKDIR__/pw/.miniconda3",
-    "CORES_PER_WORKER": 0.1,
+    "CORES_PER_WORKER": 1,
     "INSTALL_CONDA": "true",
     "LOCAL_CONDA_YAML": "./requirements/conda_env_remote.yaml",
     "SlurmProvider": {
