@@ -9,12 +9,12 @@ git clone -b dev https://github.com/parallelworks/parsl_utils.git parsl_utils
 jupyter nbconvert --log-level 0 --to script --output main main.ipynb
 
 # If not present, use default local.conf and executors.json
-if [ -f "local.conf" ]; then
+if [ ! -f "local.conf" ]; then
     echo Using default local.conf...
     cp local.conf.example local.conf
 fi
 
-if [ -f "executors.json" ]; then
+if [ ! -f "executors.json" ]; then
     echo Using default executors.json...
     cp executors.json.example executors.json
 fi
