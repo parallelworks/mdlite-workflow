@@ -3,7 +3,8 @@
 # Create a bunch of files
 for num in {101..120}
 do
-    fallocate -l 10MB test_$RANDOM_${num}.bin
-    echo $RANDOM >> test_${RANDOM}_${num}.bin
+    fn=test_${RANDOM}_${num}.bin
+    fallocate -l 10MB ${fn}
+    echo $RANDOM >> ${fn}
 done
 
