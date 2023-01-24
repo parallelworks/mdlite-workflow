@@ -2,15 +2,20 @@
 
 MDLite is a small, portable molecular dynamics (MD) parameter sweep workflow
 with no dependencies other than Parsl, ImageMagick, and the executables
-distributed with the workflow. (Furthermore, ImageMagick is only required
-on the host, the computer that initiates the workflow, not on the remote
-workers.) Since the PW platform can automatically copy Parsl to remote
-workers, these minimal dependencies allow this workflow to run on any
-resource.  The parameter sweep outputs are visualized in the Design
+distributed with the workflow. (Furthermore, ImageMagick is called on
+the workflow host, the computer that initiates the workflow, not on
+the remote workers.) The parameter sweep outputs are visualized in the Design
 Explorer. The entire workflow is embedded in a Jupyter notebook with
-substantial supporting documentation; this workflow is an ideal
-starting point for new users and a possible template for building
-custom workflows with topologies similar to parameter sweeps.
+substantial supporting documentation leveraging the Parsl workflow fabric
+for task orchestration; this workflow is a good starting point for new PW 
+users and a possible template for building custom workflows with topologies 
+similar to parameter sweeps.
+
+The default workflow code here, `main.ipynb` uses 
+[parsl_utils](https://github.com/parallelworks/parsl_utils) 
+to automate the tasks of installing software dependencies and connecting 
+between the PW platform and remote resources. Standalone examples without 
+`parsl_utils` are available in `./examples`.
 
 The workflow is orchestrated with the
 [Parsl parallel scripting library](https://parsl-project.org/) via
@@ -18,11 +23,11 @@ a Jupyter notebook according to the schematic below. ![.](images/mdlite-paramete
 
 ## Contents
 
-+ **`cloud.md`:** lists instructions specific to running on cloud clusters.
 + **`./images`:** contains any images to be displayed in the documentation.
 + **`./examples`:** contains notes/scripts/config files to faciliate testing the individual steps of the workflow on a computer or cluster.
 + **`./models`:** contains the code and executables for the MD simulation and visulaization apps.
 + **`./utils`:** contains helper utilities to streamline the workflow code.
++ **`./requirements`:** contains Python packages needed by this workflow.  These dependencies are installed automatically by `parsl_utils`.
 + **`main.ipynb`:** is the Jupyter notebook that contains the workflow code.
 + **`workflow.xml`:** is the file that defines the workflow launch form when clicking on the MDLite workflow card on the left column of the `Compute` tab.
 
