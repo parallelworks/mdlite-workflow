@@ -20,7 +20,7 @@ a Jupyter notebook according to the schematic below. ![.](images/mdlite-paramete
 
 + **`cloud.md`:** lists instructions specific to running on cloud clusters.
 + **`./images`:** contains any images to be displayed in the documentation.
-+ **`./local-runs`:** contains scripts to faciliate testing the individual steps of the workflow on a local computer.
++ **`./examples`:** contains notes/scripts/config files to faciliate testing the individual steps of the workflow on a computer or cluster.
 + **`./models`:** contains the code and executables for the MD simulation and visulaization apps.
 + **`./utils`:** contains helper utilities to streamline the workflow code.
 + **`main.ipynb`:** is the Jupyter notebook that contains the workflow code.
@@ -31,13 +31,40 @@ a Jupyter notebook according to the schematic below. ![.](images/mdlite-paramete
 This workflow can be added to your PW account from the PW marketplace
 (globe icon in upper right corner).  It is also possible to install this
 workflow directly from its [GitHub repository](https://github.com/parallelworks/mdlite-workflow)
-with the following steps:
+in two different ways.
+
+### Method 1: GitHub synced installation
+
+GitHub synced workflows exist as only a "stub" file on the PW platform.
+Every time the workflow is executed from a PW form's "Execute" button, 
+a fresh copy of the workflow code is cloned from GitHub into the workflow's 
+working directory.  The stub file, `github.json` is the only file in the 
+workflow directory.  For example, you can use this workflow if you have
+the file below in `/pw/workflows/<mdlite_workflow_name>` (your choice for
+the parameter in `<>`):
+```bash
+{
+    "repo": "https://github.com/parallelworks/mdlite-workflow.git",
+    "branch": "main",
+    "dir": ".",
+    "xml": "workflow.xml",
+    "thumbnail": "images/mdlite.png",
+    "readme": "README.md"
+}
+```
+An example of this file is provided in `./examples`.
+
+### Method 2: Cloned installation (manual pulls required)
+
+If you don't want to automatically pull the current version of the workflow
+from GitHub, you can make your own clone with which you can control when
+code is pulled with the following steps:
 
 1. Create a new workflow by navigating to the `Workflows` tab and `Add Workflow` (select a `Parsl Notebook` workflow).
 2. A new directory `/pw/workflows/<new_workflow_name>` is created.  Delete all the files that are prepopulated in this directory.
 3. In the now empty PW workflow directory (do not forget the .):
 ```bash
-git clone https://github.com/parallelworks/gromacs_solvate_membrane .
+git clone https://github.com/parallelworks/mdlite-workflow .
 ```
 
 ## General Setup

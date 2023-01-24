@@ -3,6 +3,6 @@
     "branch": "main",
     "dir": ".",
     "xml": "workflow.xml",
-    "thumbnail": "workflow/thumbnails/mdlite.png",
+    "thumbnail": "images/mdlite.png",
     "readme": "README.md"
 }

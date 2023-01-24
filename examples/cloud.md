@@ -1,7 +1,10 @@
 # MDLite cloud cluster instructions
 
-These instructions detail the steps necessary for running MDLite
-on a cloud cluster.  They are specific to the `main_cloud_cluster.ipynb`.
+These instructions detail the manual steps necessary for running MDLite
+on a cluster's head node with `main_parsl_standalone.ipynb` instead of 
+using `main.ipynb` in tandem with `parsl_utils` in a workflow
+running from the PW platform. Normally, step 2 is taken care of with
+[parsl_utils](https://github.com/parallelworks/parsl_utils).
 
 1. Configure and start a PW cloud cluster.  This cluster can have
 very small nodes as the computational needs of MDLite are very 
@@ -20,9 +23,9 @@ cd mdlite-workflow/utils
 ```
 This step takes about **5 minutes**.
 
-3. Log out and launch a JupyterHub interactive session.  For 
-example, you can use a PW GitHub workflow with the following 
-`github.json` definition:
+3. Log out and launch a JupyterHub interactive session on the
+cluster. If you are using a PW cloud cluster, you can use a PW 
+GitHub workflow with the following `github.json` definition:
 ```bash
 {
     "repo": "https://github.com/parallelworks/interactive_session.git",
@@ -46,10 +49,11 @@ This step takes about **2 minutes**.
 
 4. Enter the JupyterHub interactive session (use the password 
 defined in step 3, if defined) and navigate to and open 
-`/home/<user>/mdlite-workflow/main_cloud_cluster.ipynb`. Run the 
+`/home/<user>/mdlite-workflow/examples/main_parsl_standalone.ipynb`. Run the 
 first 9 cells for the demo.  The 10th cell will clean up 
 **EVERYTHING** (except for the Conda env), including deleting 
 the results!
 
 5. Click on the `mdlite_dex.html` file as viewed in the PW IDE 
 file browser to display the Design Explorer results.
+
