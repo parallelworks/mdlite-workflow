@@ -36,7 +36,11 @@ a Jupyter notebook according to the schematic below. ![.](images/mdlite-paramete
 This workflow can be added to your PW account from the PW marketplace
 (globe icon in upper right corner).  It is also possible to install this
 workflow directly from its [GitHub repository](https://github.com/parallelworks/mdlite-workflow)
-in two different ways.
+in two different ways. Workflow installation is necessary if you want to
+run this workflow from a PW form.  If you want to run this workflow directly
+from the Jupyter notebook, the setup process is outlined in the 
+section `Running directly within the Jupyter notebook`, below. When running from
+a notebook, the PW platform is not tracking individual runs of the workflow.
 
 ### Method 1: GitHub synced installation
 
@@ -57,7 +61,14 @@ the parameter in `<>`):
     "readme": "README.md"
 }
 ```
-An example of this file is provided in `./examples`.
+An example of this file is provided in `./examples`. There are two other
+key configuration files necessary to run this workflow: `local.conf` and
+`executors.json`.  The names of the clusters in the `POOL` fields in 
+`executors.json` **must** match the names of resources in your PW account. 
+Examples of `local.conf` and `executors.json` are in `./examples` and these
+files are used for configuring the workflow if they are not present in the
+main workflow directory (e.g. `/pw/workflows/mdlite`) at the time the 
+workflow is run.
 
 ### Method 2: Cloned installation (manual pulls required)
 
@@ -71,6 +82,8 @@ code is pulled with the following steps:
 ```bash
 git clone https://github.com/parallelworks/mdlite-workflow .
 ```
+The same considerations apply to the essential files `executors.json`
+and `local.conf` as outlined at the end of install Method #1, above.
 
 ## General Setup
 
@@ -81,13 +94,24 @@ for a cloud worker.
 
 ## Optional installation tips
 
-By default, the PW platform will install Parsl on a remote resource
-(either a cloud worker or on-premise cluster worker).  This can add
-a minute or more to the workflow start, so it can be bypassed by
-preinstalling Parsl on cloud worker images or on an on-premise
-cluster.
+By default, the PW platform will install Parsl locally and on a 
+remote resource (either a cloud worker or on-premise cluster worker)
+if Parsl is not installed in the location specified in `local.conf`
+and `executors.json`. This installation can add a few minutes to the 
+workflow start, so it can be bypassed by preinstalling Parsl on 
+cloud worker images or on an on-premise cluster.
 
-### Preinstalling Parsl on an on-premise cluster
+### Manually preinstalling Parsl on an on-premise cluster
+
+Since on-premise clusters are persistent, these steps do not have
+to be repeated if Parsl is installed either manually (outlined below)
+or automatically (by `parsl_utils`) the first time a workflow is run.
+Therefore, it is recommened that users follow the autoinstall approach.
+However, if users want direct access, the following steps are one approach
+to manually deploying a Conda environment to a cluster. The essential 
+consideration is that Parsl requires exactly the same version of Python
+and Parsl on the local and remote systems. Another approach is to use
+`./utils/build_conda_env.sh` as a template.
 
 To pre-install your `.miniconda3` on an on-premise cluster, use
 a shared space such as `/scratch` as the workflow work directory
@@ -98,19 +122,15 @@ on the PW platform:
 3. copy (e.g. scp) `/pw/.packs/miniconda3.tgz` to a shared space on the cluster,
 4. decompress the Conda package (e.g. `tar -xvzf miniconda3.tgz`),
 5. use `./utils/update_conda_path.sh` as a template for updating the Conda paths.
-(These are the steps that are automatically executed if a Conda installation is
-not present.)
-
-On the PW platform, the resource's settings under the `Workflow` tab
-needs to be:
-Work Dir: /scratch/sfg3866/pworks
 
 ### Preinstalling Parsl on a cloud worker
 
 The `worker-ocean-parcels-13` image already has a `.miniconda3` directory
-loaded in `/var/lib/pworks`.  The PW platform knows to look in that location
-for an existing `.miniconda3`.  In this case, the worker start up scripts
-will update the Conda paths in `/var/lib/pworks/.miniconda3`.
+loaded in `/var/lib/pworks`.  This is good location for preinstalling 
+software on custom images because it is persistent in the image (whereas
+`$HOME` and `/tmp` are not easily shared between different users and/or
+not persistent). Please see `./utils/build_conda_env.sh` for an example
+for building a Conda environment.
 
 ## Running the workflow
 
@@ -122,13 +142,16 @@ to be used with with workflow with the On/Off button on the `Compute` tab.
 
 Once the resource is turned on, in the `Compute` tab, click on the `MDLITE`
 card in the left column of the PW platform.  This will open a form (whose content
-is entirely controlled by `workflow.xml` in this folder) that will allow the
+is entirely controlled by `workflow.xml` in this repository) that will allow the
 user to specify ranges and steps of the four parameters that can be adjusted
 in this molecular dynamics simulation.  The format for the parameters is
 `start:stop:step` and it is also possible to enter a single value. Once the
 parameters are entered, click on the `Execute` button.  A new folder at
 `/pw/jobs/<job_id>` will be created in the user's file system (right column)
-that will store a copy of all workflow files, logs, and results.
+that will store a copy of all workflow files, logs, and results. The workflow
+code itself is converted from notebook format to a standard Ptyhon script
+at the time of workflow launch. (`workflow_form_launcher.sh` is called when
+the Execute button is pressed.)
 
 The default form inputs will start 16 cases and with the default resources
 and 16 worker nodes, will take about 3 minutes to complete.  The key outputs
@@ -138,20 +161,30 @@ Design Explorer by double clicking on `/pw/jobs/<job_id>/mdlite_dex.html`.
 ### Running directly within the Jupyter notebook
 
 The entirety of this workflow is orchestrated in a Jupyter notebook,
-`main.ipynb`.  The PW platform is notebook aware so this notebook is
-rendered by double clicking on the file from the file list on the right
-side of the PW platform `Compute` tab. The workflow is executed by
-executing the cells in the notebook.  (Note that the last cell cleans
-up after the workfow is run, including the results!)
+`main.ipynb`.  The PW platform can display notebooks by starting a
+JupyterHub instance inside the user's containerized IDE with the `Jupyter`
+workflow, selecting the `PW USER CONTAINER` option in the `Jupyter Server Host`
+section. The workflow is executed by executing the cells in the notebook.  
+(Note that the last cell cleans up after the workfow is run, including the results!)
 
 In order to run jobs on remote resources, Parsl must be presented with
-the correct configuration in the notebook.  This configuration is in the
-form of `pw.conf`, which must be located in the same directory as `main.ipynb`.
-`pw.conf` can be obtained at least two ways:
-1. from a job directory of a run that was started with a form (see previous section) as long as the compute resource has not been turned off and back on again, or
-2. from the `Workflows` tab, select the MDLITE card (this workflow), select the `Resources` subtab, and the `Preview` subsubtab.  The text displayed here is the content of `pw.conf`.
+the correct configuration in the notebook.  This configuration is set up 
+via `parsl_utils` which reads the files `local.conf` and `executors.json`
+(Please see more information about these files in the section 
+`Method 1: GitHub synced installation`, above.)
 
 Running from a notebook directly is different than running from the
 PW platform forms because notebook runs will not create a new directory
-in `/pw/jobs`.  Instead, all file staging happens in the directory that
-`main.ipynb` is running from.
+in `/pw/jobs`.  Currently, `parsl_utils` **assumes** that workflows are
+running from `/pw/jobs`.  The current workaround is to create an artifical
+workflow director, e.g. `/pw/jobs/10001` and copy the workflow files into
+that directory, e.g.:
+```bash
+mkdir -p /pw/jobs/10001
+cd /pw/jobs/10001
+git clone https://github.com/parallelworks/mdlite-workflow .
+```
+All file staging happens in the directory that
+`main.ipynb` is running from (in this case, the artificial job
+directory).
+
