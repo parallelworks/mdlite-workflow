@@ -6,85 +6,20 @@ import parsl
 print(parsl.__version__, flush = True)
 from parsl.app.app import python_app, bash_app
 
-from config import config,exec_conf,read_args,selectedExecutor
-
 import parsl_utils
+from parsl_utils.config import config, exec_conf, pwargs, job_number
+from parsl_utils.data_provider import PWFile
+
+from workflow_apps import *
+
 
 # Job runs in directory /pw/jobs/job-number
 job_number = os.path.dirname(os.getcwd().replace('/pw/jobs/', ''))
 
-if selectedExecutor == None:
-    EXECUTOR='googlecloud'
-else:
-    EXECUTOR=selectedExecutor
-
-# PARSL APPS:
-@parsl_utils.parsl_wrappers.log_app
-@python_app(executors=[EXECUTOR])
-def hello_python_app_1(name = '', stdout='std.out', stderr = 'std.err'):
-    import socket
-    if not name:
-        name = 'python_app_1'
-    return 'Hello ' + name + ' from ' + socket.gethostname()
-
-@parsl_utils.parsl_wrappers.log_app
-@parsl_utils.parsl_wrappers.stage_app(exec_conf[EXECUTOR]['HOST_USER'] + '@' + exec_conf[EXECUTOR]['HOST_IP'])
-@bash_app(executors=[EXECUTOR])
-def md_run(rundir, case, inputs_dict = {}, outputs_dict = {}, stdout='md.run.stdout', stderr='md.run.stderr'):
-    return '''
-    echo running mdlite in $rundir
-    mkdir -p {rundir} && cd {rundir}
-    chmod +x runMD.sh
-    mkdir -p {outdir} && cd {outdir}
-    ../runMD.sh "{case}" metric.out trj.out
-    '''.format(
-        rundir=rundir,
-        case=case,
-        outdir=outputs_dict['results']['worker_path']
-    )
-
-#===================================
-# App to render frames for animation
-#===================================
-# All frames for a given simulation
-# are rendered together.
-
-# This app takes a very simple
-# approach to zero padding by adding
-# integers to 1000.
-@parsl_utils.parsl_wrappers.log_app
-@parsl_utils.parsl_wrappers.stage_app(exec_conf[EXECUTOR]['HOST_USER'] + '@' + exec_conf[EXECUTOR]['HOST_IP'])
-@bash_app(executors=[EXECUTOR])
-def md_vis(rundir, nframe, inputs_dict={}, outputs_dict={}, stdout='md.vis.stdout', stderr='md.vis.stderr'):
-    return '''
-    echo running {nframe} c-ray in {rundir}
-    mkdir -p {rundir} && cd {rundir}
-    indir="{indir}"
-    outdir="{outdir}"
-    rm -f $outdir && mkdir -p $outdir
-    chmod +x *
-    for (( ff=0; ff<{nframe}; ff++ ))
-    do
-        frame_num_padded=$((1000+$ff))
-        ./renderframe_shared_fs $indir/trj.out $outdir/f_$frame_num_padded.ppm $ff
-    done
-    '''.format(
-        rundir=rundir,
-        nframe=nframe,
-        indir=inputs_dict['md-results']['worker_path'],
-        outdir=outputs_dict['results']['worker_path']
-    )
-
 if __name__ == '__main__':
-    args = read_args()
-    job_number = args['job_number']
 
     print('Loading Parsl Config', flush = True)
     parsl.load(config)
-
-    # print('\n\n\nHELLO PYTHON APP:', flush = True)
-    # fut_1 = hello_python_app_1(name = args['name'])
-    # print(fut_1.result())
 
     if (exists("./params.run")):
         print("Running from a PW form.")
@@ -130,29 +65,25 @@ if __name__ == '__main__':
     for ii, case in enumerate(cases_list):
         fut_1 = md_run(
             rundir = exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii),
-            case=case,
-            inputs_dict = {
-                "model": {
-                    "type": "file",
-                    "global_path": "pw://{cwd}/models/mdlite/*",
-                    "worker_path": "{remote_dir}".format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
-                }
-            },
-            outputs_dict = {
-                "results": {
+            case = case,
+            inputs = [
+                PWFile(
+                    url = 'file://usercontainer/{cwd}/models/mdlite/*'.format(cwd = os.getcwd()),
+                    local_path = '{remote_dir}'.format(remote_dir = exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
+                )
+            ],
+            outputs = [
+                PWFile(
                     "type": "directory",
-                    "global_path": "pw://{cwd}/results/case_"+str(ii)+'/mdlite',
-                    "worker_path": "{remote_dir}/mdlite".format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
-                }
-            },
+                    url = 'file://usercontainer/{cwd}/results/case_'.format(cwd = os.getcwd()) +str(ii) + '/mdlite',
+                    local_path = '{remote_dir}/mdlite'.format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
+                )
+            ],
             stdout = os.path.join(exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii), 'std.out'),
             stderr = os.path.join(exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii), 'std.err')
         )
 
         md_run_fut.append(fut_1)
-
-    for run in md_run_fut:
-        run.result()
 
     #============================================================================
     # VISUALIZE
@@ -165,25 +96,23 @@ if __name__ == '__main__':
         fut_2 = md_vis(
             rundir = exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii),
             nframe=nframe,
-            inputs_dict = {
-                "model": {
-                    "type": "file",
-                    "global_path": "pw://{cwd}/models/c-ray/*",
-                    "worker_path": "{remote_dir}".format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
-                },
-                "md-results": {
-                    "type": "directory",
-                    "global_path": "pw://{cwd}/results/case_"+str(ii)+"/mdlite",
-                    "worker_path": "{remote_dir}/mdlite".format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
-                }
-            },
-            outputs_dict = {
-                "results": {
-                    "type": "directory",
-                    "global_path": "pw://{cwd}/results/case_"+str(ii)+'/viz',
-                    "worker_path": "{remote_dir}/viz".format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
-                }
-            },
+            inputs = [
+                PWFile(
+                    url = 'file://usercontainer/{cwd}/models/c-ray/*'.format(cwd = os.getcwd()),
+                    local_path = '{remote_dir}'.format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
+                ),
+                PWFile(
+                    url = 'file://usercontainer/{cwd}/results/case_'.format(cwd = os.getcwd()) + str(ii) + '/mdlite',
+                    local_path = '{remote_dir}/mdlite'.format(remote_dir = exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
+                ),
+                *md_run_fut
+            ],
+            outputs_dict = [
+                PWFile(
+                    url = 'pw://{cwd}/results/case_'.format(os.getcwd()) + str(ii) + '/viz',
+                    local_path = '{remote_dir}/viz'.format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
+                )
+            ],
             stdout = os.path.join(exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii), 'std.out'),
             stderr = os.path.join(exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii), 'std.err')
         )
