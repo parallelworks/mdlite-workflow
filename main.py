@@ -104,7 +104,7 @@ if __name__ == '__main__':
                     url = 'file://usercontainer/{cwd}/results/case_'.format(cwd = os.getcwd()) + str(ii) + '/mdlite/',
                     local_path = '{remote_dir}/mdlite'.format(remote_dir = exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
                 ),
-                *md_run_fut
+                md_run_fut[ii]
             ],
             outputs = [
                 PWFile(
