@@ -74,9 +74,8 @@ if __name__ == '__main__':
             ],
             outputs = [
                 PWFile(
-                    "type": "directory",
                     url = 'file://usercontainer/{cwd}/results/case_'.format(cwd = os.getcwd()) +str(ii) + '/mdlite',
-                    local_path = '{remote_dir}/mdlite'.format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
+                    local_path = '{remote_dir}/mdlite/'.format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
                 )
             ],
             stdout = os.path.join(exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii), 'std.out'),
@@ -102,15 +101,15 @@ if __name__ == '__main__':
                     local_path = '{remote_dir}'.format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
                 ),
                 PWFile(
-                    url = 'file://usercontainer/{cwd}/results/case_'.format(cwd = os.getcwd()) + str(ii) + '/mdlite',
+                    url = 'file://usercontainer/{cwd}/results/case_'.format(cwd = os.getcwd()) + str(ii) + '/mdlite/',
                     local_path = '{remote_dir}/mdlite'.format(remote_dir = exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
                 ),
                 *md_run_fut
             ],
-            outputs_dict = [
+            outputs = [
                 PWFile(
-                    url = 'pw://{cwd}/results/case_'.format(os.getcwd()) + str(ii) + '/viz',
-                    local_path = '{remote_dir}/viz'.format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
+                    url = 'file://{cwd}/results/case_'.format(cwd = os.getcwd()) + str(ii) + '/viz',
+                    local_path = '{remote_dir}/viz/'.format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
                 )
             ],
             stdout = os.path.join(exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii), 'std.out'),
