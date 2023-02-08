@@ -38,7 +38,7 @@ my_username=$(whoami)
 # doesn't work with "~", so best
 # to put an absolute path here
 # if putting Miniconda in $HOME.
-miniconda_loc="/home/${my_username}/pw/miniconda"
+miniconda_loc="/pw/.miniconda3"
 echo Will install to $miniconda_loc
 
 # Ensure that the beginning of the path
@@ -62,7 +62,7 @@ rm ./Miniconda3-latest-Linux-x86_64.sh
 # envs with different names for testing
 # or running multiple workflows on the
 # same resource.
-my_env="mdlite"
+my_env="base"
 
 # Define specific versions here
 # or leave blank to use whatever
@@ -97,11 +97,12 @@ fi
 conda install -y requests
 conda install -y ipykernel
 conda install -y -c anaconda jinja2
-conda install -y -c conda-forge jupyter
-conda install -y -c conda-forge parsl
-conda install -y -c conda-forge numpy
-conda install -y -c conda-forge pandas
-conda install -y -c conda-forge matplotlib
+conda install -y nbconvert
+#conda install -y -c conda-forge jupyter
+#conda install -y -c conda-forge parsl
+#conda install -y -c conda-forge numpy
+#conda install -y -c conda-forge pandas
+#conda install -y -c conda-forge matplotlib
 
 # Write out the requirements.txt to document environment
-conda list -e > requirements.txt
+#conda list -e > requirements.txt
