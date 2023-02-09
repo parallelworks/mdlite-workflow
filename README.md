@@ -110,20 +110,21 @@ Therefore, it is recommened that users follow the autoinstall approach.
 However, if users want direct access, the following steps are one approach
 to manually deploying a Conda environment to a cluster. The essential 
 consideration is that Parsl requires exactly the same version of Python
-and Parsl on the local and remote systems. Another approach is to use
+and Parsl on the local and remote systems. The general approach is to use
 `./utils/build_conda_env.sh` as a template.
 
-To pre-install your `.miniconda3` on an on-premise cluster, use
-a shared space such as `/scratch` as the workflow work directory
-and a place to hold `.miniconda3`.  To copy the Conda installation
-on the PW platform:
+As a last option, you can grab the default Conda env on the PW platform
+and transfer it to the remote resource. To install this environment on
+an on-premise cluster, use a shared space such as `/scratch` as the 
+workflow work directory and a place to hold `.miniconda3`.  To copy 
+the Conda installation on the PW platform:
 1. ensure `/pw/.packs` already exists (e.g. `mkdir -p /pw/.packs`),
 2. run `pwpack` (takes a few minutes) to create an archive of the Conda installation,
 3. copy (e.g. scp) `/pw/.packs/miniconda3.tgz` to a shared space on the cluster,
 4. decompress the Conda package (e.g. `tar -xvzf miniconda3.tgz`),
 5. use `./utils/update_conda_path.sh` as a template for updating the Conda paths.
 
-### Preinstalling Parsl on a cloud worker
+### Special considerations for cloud snapshot images:
 
 The `worker-ocean-parcels-13` image already has a `.miniconda3` directory
 loaded in `/var/lib/pworks`.  This is good location for preinstalling 
@@ -154,9 +155,8 @@ at the time of workflow launch. (`workflow_form_launcher.sh` is called when
 the Execute button is pressed.)
 
 The default form inputs will start 16 cases and with the default resources
-and 16 worker nodes, will take about 3 minutes to complete.  The key outputs
-are in `/pw/jobs/<job_id>/results` and are quickly visualized in the
-Design Explorer by double clicking on `/pw/jobs/<job_id>/mdlite_dex.html`.
+and 16 worker nodes, will take about 3 minutes to complete (not including
+time for spinning up cloud-based worker nodes).
 
 ### Running directly within the Jupyter notebook
 
@@ -186,5 +186,16 @@ git clone https://github.com/parallelworks/mdlite-workflow .
 ```
 All file staging happens in the directory that
 `main.ipynb` is running from (in this case, the artificial job
-directory).
+directory). Start the Jupyter notebook itself via the `Jupyter`
+interactive workflow session running in the `PW USER CONTAINER`.
 
+## Viewing workflow outputs
+
+The workflow copies all intermediate results and app-level logs
+(i.e. output files, stderr, and stdout from the simulation and 
+visualation apps executed on the remote resource) to `/pw/jobs/<jobid>/results`. 
+Users can view these directories and see results streaming in in 
+real time as the output files are `rsync`ed from the remote resource 
+to the user's IDE on the PW platform. An interactive synthesis of
+these results is viewed in a Design Explorer session by double-clicking 
+on `/pw/jobs/<jobid>/mdlite_dex.html`.
