@@ -4,15 +4,15 @@
     "PROVIDER_TYPE": "LOCAL",
     "CONDA_ENV": "parsl-1.2",
     "CONDA_DIR": "__POOLWORKDIR__/pw/.miniconda3",
-    "CORES_PER_WORKER": 0.1,
+    "cores_per_worker": 1,
     "INSTALL_CONDA": "true",
     "LOCAL_CONDA_YAML": "./requirements/conda_env_remote.yaml",
     "SlurmProvider": {
       "partition": "compute",
       "nodes_per_block": 1,
-      "cores_per_node": 2,
+      "cores_per_node": 1,
       "min_blocks": 0,
-      "max_blocks": 10,
+      "max_blocks": 32,
       "walltime": "01:00:00"
     }
   },
@@ -21,15 +21,15 @@
     "PROVIDER_TYPE": "LOCAL",
     "CONDA_ENV": "parsl-1.2",
     "CONDA_DIR": "__POOLWORKDIR__/pw/.miniconda3",
-    "CORES_PER_WORKER": 0.1,
+    "cores_per_worker": 1,
     "INSTALL_CONDA": "true",
     "LOCAL_CONDA_YAML": "./requirements/conda_env_remote.yaml",
     "SlurmProvider": {
       "partition": "compute",
       "nodes_per_block": 1,
-      "cores_per_node": 2,
+      "cores_per_node": 1,
       "min_blocks": 0,
-      "max_blocks": 10,
+      "max_blocks": 32,
       "walltime": "01:00:00"
     }
   }
