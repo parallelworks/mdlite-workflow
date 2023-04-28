@@ -108,7 +108,7 @@ if __name__ == '__main__':
             ],
             outputs = [
                 PWFile(
-                    url = 'file://{cwd}/results/case_'.format(cwd = os.getcwd()) + str(ii) + '/viz',
+                    url = 'file://usercontainer/{cwd}/results/case_'.format(cwd = os.getcwd()) + str(ii) + '/viz',
                     local_path = '{remote_dir}/viz/'.format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
                 )
             ],
