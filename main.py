@@ -68,14 +68,14 @@ if __name__ == '__main__':
             case = case,
             inputs = [
                 PWFile(
-                    url = 'file://usercontainer/{cwd}/models/mdlite/*'.format(cwd = os.getcwd()),
-                    local_path = '{remote_dir}'.format(remote_dir = exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
+                    url = './models/mdlite/*',
+                    local_path = './' + str(ii)
                 )
             ],
             outputs = [
                 PWFile(
-                    url = 'file://usercontainer/{cwd}/results/case_'.format(cwd = os.getcwd()) +str(ii) + '/mdlite',
-                    local_path = '{remote_dir}/mdlite/'.format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
+                    url = './results/case_' +str(ii) + '/mdlite',
+                    local_path = './' + str(ii) + '/mdlite/'
                 )
             ],
             stdout = os.path.join(exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii), 'std.out'),
@@ -97,19 +97,19 @@ if __name__ == '__main__':
             nframe=nframe,
             inputs = [
                 PWFile(
-                    url = 'file://usercontainer/{cwd}/models/c-ray/*'.format(cwd = os.getcwd()),
-                    local_path = '{remote_dir}'.format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
+                    url = './models/c-ray/*',
+                    local_path = './' + str(ii)
                 ),
                 PWFile(
-                    url = 'file://usercontainer/{cwd}/results/case_'.format(cwd = os.getcwd()) + str(ii) + '/mdlite/',
-                    local_path = '{remote_dir}/mdlite'.format(remote_dir = exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
+                    url = './results/case_' + str(ii) + '/mdlite/',
+                    local_path = './mdlite/' + '/' + str(ii)
                 ),
                 md_run_fut[ii]
             ],
             outputs = [
                 PWFile(
-                    url = 'file://usercontainer/{cwd}/results/case_'.format(cwd = os.getcwd()) + str(ii) + '/viz',
-                    local_path = '{remote_dir}/viz/'.format(remote_dir =  exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii))
+                    url = './results/case_' + str(ii) + '/viz/',
+                    local_path = './viz/' + '/' + str(ii) + '/'
                 )
             ],
             stdout = os.path.join(exec_conf[EXECUTOR]['RUN_DIR'] + '/' + str(ii), 'std.out'),
@@ -125,7 +125,9 @@ if __name__ == '__main__':
 
     # Compile frames into movies locally
     for ii, case in enumerate(cases_list):
-        os.system("cd ./results/case_"+str(ii)+"/viz; convert -delay 10 *.ppm mdlite.gif")
+        cmd = "cd ./results/case_"+str(ii)+"/viz; convert -delay 10 *.ppm mdlite.gif"
+        print(cmd)
+        os.system(cmd)
 
     # Compile movies into Design Explorer results locally
     os.system("./models/mexdex/postprocess.sh mdlite_dex.csv mdlite_dex.html ./")
