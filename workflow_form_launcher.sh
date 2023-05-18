@@ -2,8 +2,8 @@
 set -x
 
 # Grab current version of parsl_utils
-#git clone -b dev https://github.com/parallelworks/parsl_utils.git parsl_utils
-git clone https://github.com/parallelworks/parsl_utils.git parsl_utils
+git clone -b sfg-dev https://github.com/parallelworks/parsl_utils.git parsl_utils
+#git clone https://github.com/parallelworks/parsl_utils.git parsl_utils
 
 # Convert Jupyter notebook to main.py
 # (.py is automatically appended to output!)
