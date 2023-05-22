@@ -62,7 +62,7 @@ rm ./Miniconda3-latest-Linux-x86_64.sh
 # envs with different names for testing
 # or running multiple workflows on the
 # same resource.
-my_env="base"
+my_env="mdlite"
 
 # Define specific versions here
 # or leave blank to use whatever
@@ -77,32 +77,45 @@ parsl_version="==1.2"
 python_version=""
 parsl_version=""
 
-# Start conda
+# Start conda and prepare base environment
 source ${miniconda_loc}/etc/profile.d/conda.sh
 conda activate base
 
-# Create new environment
-# We are running Jupter notebooks so include ipython here.
+# Install packages for hosting Jupyter notebooks
+conda install -y ipython
+conda install -y -c conda-forge jupyter
+conda install -y nb_conda_kernels
+conda install -y -c anaconda jinja2
+conda install -y requests
+conda install nbconvert
+pip install remote_ikernel
+
+# Create new environment if required
 if [[ $my_env == "base" ]]
 then
-    conda install -y ipython
+    # We are done
+    # Write out the requirements.txt to document environment
+    #conda list -e > requirements.txt
 else
+    # We often run Jupter notebooks so include ipython here.
     conda create -y --name $my_env python${python_version} ipython
 
     # Jump into new environment
     conda activate $my_env
+
+    # Install packages for connecting kernels to notebooks in base
+    conda install -y requests
+    conda install -y ipykernel
+    conda install -y -c anaconda jinja2
+    
+    # Other more specialized packages
+    conda install -y -c conda-forge parsl
+    conda install -y -c conda-forge numpy
+    conda install -y -c conda-forge pandas
+    conda install -y -c conda-forge matplotlib
+
+    # Write out the requirements.txt to document environment
+    #conda list -e > requirements.txt
 fi
+echo "Done with building the ${my_env} Conda environment in ${miniconda_loc}"
 
-# Install packages
-conda install -y requests
-conda install -y ipykernel
-conda install -y -c anaconda jinja2
-conda install -y nbconvert
-#conda install -y -c conda-forge jupyter
-#conda install -y -c conda-forge parsl
-#conda install -y -c conda-forge numpy
-#conda install -y -c conda-forge pandas
-#conda install -y -c conda-forge matplotlib
-
-# Write out the requirements.txt to document environment
-#conda list -e > requirements.txt
