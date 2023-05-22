@@ -93,7 +93,7 @@ pip install remote_ikernel
 # Create new environment if required
 if [[ $my_env == "base" ]]
 then
-    # We are done
+    echo Done installing packages in base environment.
     # Write out the requirements.txt to document environment
     #conda list -e > requirements.txt
 else
