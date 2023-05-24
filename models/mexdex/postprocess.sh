@@ -31,7 +31,10 @@ basedir=$(realpath $rpath)
 
 # Retain a relative path:
 #basedir=$rpath
-DEbase="/preview"
+
+# Change in DEX convention, May 2023
+#DEbase="/preview"
+DEbase=""
 
 # write the csv file
 python ./models/mexdex/writeDesignExplorerCsv.py --imagesDirectory "results/case_{:d}/vis" cases.list models/mexdex/kpi.json $basedir $outcsv
