@@ -2,7 +2,9 @@
 set -x
 
 # Grab current version of parsl_utils
-git clone -b dev https://github.com/parallelworks/parsl_utils.git parsl_utils
+# or specify branch with -b
+git clone https://github.com/parallelworks/parsl_utils.git parsl_utils
+#git clone -b dev https://github.com/parallelworks/parsl_utils.git parsl_utils
 
 # If not present, use default local.conf and executors.json
 if [ ! -f "local.conf" ]; then
