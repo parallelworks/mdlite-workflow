@@ -26,6 +26,7 @@ if [ ! -f "local.conf" ]; then
     echo Using default local.conf...
     cp ./examples/local.conf.example ./local.conf
 fi
+source local.conf
 
 if [ ! -f "executors.json" ]; then
     echo Using default executors.json...
