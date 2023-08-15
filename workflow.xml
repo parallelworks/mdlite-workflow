@@ -1,8 +1,28 @@
 <tool id='nyu1_mdlite' name='nyu1_mdlite'>
   <command interpreter='bash'>workflow_form_launcher.sh</command>
   <inputs>
+    <section name='compute' type='section' title='Compute Resources' expanded='true'>
+      <param name='sim_host'
+             label='Workflow simulation host (cluster name)'
+             type='computeResource'
+             width='50%_none%'
+             help='Name of cluster to run the molecular dynamics simulation. Select a resource from drop down menu.'>
+      </param>
+      <param name='vis_host'
+             label='Workflow visualization host (cluster name)'
+             type='computeResource'
+             width='50%_none%'
+             help='Name of cluster to visualize the molecular dynamics simulation. Select a resource from drop down menu.'>
+      </param>
+    </section>
     <section name='geometry' type='section' title='Runtime Parameters' expanded='true'>
-      <param name='npart' label='Number of Particles' type='text' value='25:50:25' width='50%' help='Whitespace delimited or range/step (e.g. min:max:step)' argument='input'></param>
+      <param name='npart'
+		label='Number of Particles' 
+		type='text' value='25:50:25' 
+		width='50%' 
+		help='Whitespace delimited or range/step (e.g. min:max:step)' 
+		argument='input'>
+      </param>
       <param name='steps' label='Timesteps' type='text' value='3000:6000:3000' width='50%' help='Whitespace delimited or range/step (e.g. min:max:step)' argument='input'></param>
       <param name='mass' label='Particle Mass' type='text' value='0.01:0.02:0.01' width='50%' help='Whitespace delimited or range/step (e.g. min:max:step)' argument='input'></param>
       <param name='trsnaps' label='Frames' type='text' value='5' width='50%' help='Whitespace delimited or range/step (e.g. min:max:step)' argument='input'></param>
