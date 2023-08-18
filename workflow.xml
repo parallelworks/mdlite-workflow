@@ -1,6 +1,17 @@
 <tool id='nyu1_mdlite' name='nyu1_mdlite'>
   <command interpreter='bash'>workflow_form_launcher.sh</command>
   <inputs>
+    <param name='pw_conda_yaml' 
+           label='PW Conda YAML Definition File' type='hidden' 
+           value='./requirements/conda_env_local.yaml' width='50%_none'>
+    </param>
+    <param name='pw_conda_dir' 
+           label='PW Conda Directory' type='hidden' 
+           value='/pw/miniconda3' width='50%_none'>
+    </param>
+    <param name='pw_conda_env' label='PW Conda Environment Name' 
+           type='hidden' value='parsl-1.2' width='50%_none'>
+    </param>
     <section name='pwrl_sim_host' 
              type='section' title='Simulation cluster' expanded='true'>
       <param name='resource'
@@ -16,7 +27,7 @@
       </param>
       <param name='worker_conda_yaml' 
              label='Worker Conda YAML Definition File' type='hidden' 
-             value='./requirements/worker_conda.yaml' width='50%_none'>
+             value='./requirements/conda_env_remote.yaml' width='50%_none'>
       </param>
       <param name='worker_conda_dir' 
              label='Worker Conda Directory' 
@@ -67,7 +78,7 @@
       </param>
       <param name='worker_conda_yaml'
              label='Worker Conda YAML Definition File' type='hidden'
-             value='./requirements/worker_conda.yaml' width='50%_none'>
+             value='./requirements/conda_env_remote.yaml' width='50%_none'>
       </param>
       <param name='worker_conda_dir'
              label='Worker Conda Directory'
