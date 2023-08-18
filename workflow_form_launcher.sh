@@ -21,17 +21,23 @@ git clone https://github.com/parallelworks/parsl_utils.git parsl_utils
 #-------------------------------------------
 # Configuration files
 #-------------------------------------------
-# If not present, use default local.conf and executors.json
-if [ ! -f "local.conf" ]; then
-    echo Using default local.conf...
-    cp ./examples/local.conf.example ./local.conf
-fi
-source local.conf
 
-if [ ! -f "executors.json" ]; then
-    echo Using default executors.json...
-    cp ./examples/executors.json.example ./executors.json
-fi
+# WORKING HERE - Commenting all this out to
+# test storage/transfer of this information in
+# the workflow.xml instead of the local.conf
+# and executors.json.
+
+# If not present, use default local.conf and executors.json
+#if [ ! -f "local.conf" ]; then
+#    echo Using default local.conf...
+#    cp ./examples/local.conf.example ./local.conf
+#fi
+#source local.conf
+
+#if [ ! -f "executors.json" ]; then
+#    echo Using default executors.json...
+#    cp ./examples/executors.json.example ./executors.json
+#fi
 
 #------------------------------------------
 # Launch!
