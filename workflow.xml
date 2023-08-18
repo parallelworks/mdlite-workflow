@@ -1,18 +1,106 @@
 <tool id='nyu1_mdlite' name='nyu1_mdlite'>
   <command interpreter='bash'>workflow_form_launcher.sh</command>
   <inputs>
-    <section name='compute' type='section' title='Compute Resources' expanded='true'>
-      <param name='sim_host'
+    <section name='pwrl_sim_host' 
+             type='section' title='Simulation cluster' expanded='true'>
+      <param name='resource'
              label='Workflow simulation host (cluster name)'
              type='computeResource'
              width='50%_none%'
-             help='Name of cluster to run the molecular dynamics simulation. Select a resource from drop down menu.'>
+             help='Cluster to run simulation. Select a resource from drop down menu.'
+             hideUserWorkspace='true'>
       </param>
-      <param name='vis_host'
+      <param name='nports' 
+             label='Number of Ports to Reserve' 
+             type='hidden' value='2' width='50%_none'>
+      </param>
+      <param name='worker_conda_yaml' 
+             label='Worker Conda YAML Definition File' type='hidden' 
+             value='./requirements/worker_conda.yaml' width='50%_none'>
+      </param>
+      <param name='worker_conda_dir' 
+             label='Worker Conda Directory' 
+             type='hidden' value='__workdir__/pw/miniconda' width='50%_none'>
+      </param>
+      <param name='worker_conda_env' 
+             label='Worker Conda Environment Name' 
+             type='hidden' value='parsl-1.2' width='50%_none'>
+      </param>
+      <param name='cores_per_worker' 
+             label='Cores per Worker' type='integer' min="1" max="100" 
+             help='cores_per_worker parameter for the Parsl HighThroughputExecutor' 
+             value='1' width='50%_none'>
+      </param>
+      <param name='_parsl_provider_partition' 
+             label='SLURM Partition' type='text' 
+             help='partition parameter for the Parsl SlurmProvider' 
+             value='' width='50%_none'>
+      </param>
+      <param name='_parsl_provider_nodes_per_block' 
+             label='Nodes per Block' type='integer' min="1" max="10" 
+             help='nodes_per_block parameter for the Parsl SlurmProvider' 
+             value='1' width='50%_none'>
+      </param>
+      <param name='_parsl_provider_walltime' 
+             label='Walltime' type='text' 
+             help='walltime parameter for the Parsl SlurmProvider' 
+             value='01:00:00' width='50%_none'>
+      </param>
+      <param name='_parsl_provider_max_blocks' 
+              label='Max Blocks' type='integer' min="1" max="10" 
+              help='max_blocks parameter for the Parsl SlurmProvider' 
+              value='1' width='50%_none'>
+      </param>
+    </section>
+    <section name='pwrl_vis_host' 
+             type='section' title='Visualization cluster' expanded='true'>
+      <param name='resource'
              label='Workflow visualization host (cluster name)'
              type='computeResource'
              width='50%_none%'
-             help='Name of cluster to visualize the molecular dynamics simulation. Select a resource from drop down menu.'>
+             help='Name of cluster to visualize the molecular dynamics simulation. Select a resource from drop down menu.'
+             hideUserWorkspace='true'>
+      </param>
+      <param name='nports'
+             label='Number of Ports to Reserve'
+             type='hidden' value='2' width='50%_none'>
+      </param>
+      <param name='worker_conda_yaml'
+             label='Worker Conda YAML Definition File' type='hidden'
+             value='./requirements/worker_conda.yaml' width='50%_none'>
+      </param>
+      <param name='worker_conda_dir'
+             label='Worker Conda Directory'
+             type='hidden' value='__workdir__/pw/miniconda' width='50%_none'>
+      </param>
+      <param name='worker_conda_env'
+             label='Worker Conda Environment Name'
+             type='hidden' value='parsl-1.2' width='50%_none'>
+      </param>
+      <param name='cores_per_worker'
+             label='Cores per Worker' type='integer' min="1" max="100"
+             help='cores_per_worker parameter for the Parsl HighThroughputExecutor'
+             value='1' width='50%_none'>
+      </param>
+      <param name='_parsl_provider_partition'
+             label='SLURM Partition' type='text'
+             help='partition parameter for the Parsl SlurmProvider'
+             value='' width='50%_none'>
+      </param>
+      <param name='_parsl_provider_nodes_per_block'
+             label='Nodes per Block' type='integer' min="1" max="10"
+             help='nodes_per_block parameter for the Parsl SlurmProvider'
+             value='1' width='50%_none'>
+      </param>
+      <param name='_parsl_provider_walltime'
+             label='Walltime' type='text'
+             help='walltime parameter for the Parsl SlurmProvider'
+             value='01:00:00' width='50%_none'>
+      </param>
+      <param name='_parsl_provider_max_blocks'
+              label='Max Blocks' type='integer' min="1" max="10"
+              help='max_blocks parameter for the Parsl SlurmProvider'
+              value='1' width='50%_none'>
       </param>
     </section>
     <section name='geometry' type='section' title='Runtime Parameters' expanded='true'>
