@@ -113,30 +113,46 @@
              help='cores_per_worker parameter for the Parsl HighThroughputExecutor'
              value='1' width='50%_none'>
       </param>
-      <param name='jobschedulertype'
-             label='SLURM resource'    
-             type='hidden' value='SLURM' width='50%_none'>
-      </param>
-      <param name='_parsl_provider_partition'
-             label='SLURM Partition' type='text'
-             help='partition parameter for the Parsl SlurmProvider'
-             value='' width='50%_none'>
-      </param>
-      <param name='_parsl_provider_nodes_per_block'
-             label='Nodes per Block' type='integer' min="1" max="10"
-             help='nodes_per_block parameter for the Parsl SlurmProvider'
-             value='1' width='50%_none'>
-      </param>
-      <param name='_parsl_provider_walltime'
-             label='Walltime' type='text'
-             help='walltime parameter for the Parsl SlurmProvider'
-             value='01:00:00' width='50%_none'>
-      </param>
-      <param name='_parsl_provider_max_blocks'
-              label='Max Blocks' type='integer' min="1" max="10"
-              help='max_blocks parameter for the Parsl SlurmProvider'
-              value='1' width='50%_none'>
-      </param>
+      <conditional name="jobschedulertype_cond">
+        <param name='jobschedulertype' 
+               type='select' label='Select Controller, SLURM Partition or PBS Queue' 
+               help='Job will submitted using SSH, sbatch or qsub, respectively' 
+               width='50%_none' multiple='false'>
+            <option value="CONTROLLER">Controller</option>
+            <option value="SLURM" selected="true">SLURM Partition</option>
+            <option value="PBS">PBS Queue</option>
+        </param>
+        <when value="SLURM">
+          <param name='_parsl_provider_partition' 
+                 label='SLURM Partition' type='text' 
+                 help='partition parameter for the Parsl SlurmProvider' value='' width='50%_none'>
+          </param>
+          <param name='_parsl_provider_nodes_per_block' 
+                 label='Nodes per Block' type='integer' min="1" max="10" 
+                 help='nodes_per_block parameter for the Parsl SlurmProvider' value='1' width='50%_none'>
+          </param>
+          <param name='_parsl_provider_walltime' 
+                 label='Walltime' type='text' help='walltime parameter for the Parsl SlurmProvider' 
+                 value='01:00:00' width='50%_none'>
+          </param>
+          <param name='_parsl_provider_max_blocks' 
+                 label='Max Blocks' type='integer' min="1" max="10" 
+                 help='max_blocks parameter for the Parsl SlurmProvider' value='1' width='50%_none'>
+          </param>
+        </when>
+        <when value="PBS">
+          <param name='_sch__d_q___' 
+                 label='PBS queue' type='text' 
+                 help='Queue to submit the interactive job. Must select one! Use [qstat -f -Q] to list all queues on the system' 
+                 value='' width='50%_none'>
+          </param>
+          <param name='scheduler_directives' 
+                 label='Scheduler directives' type='text' 
+                 help='e.g. -l mem=1000;-l nodes=1:ppn=4 - Use the semicolon character ; to separate parameters. Do not include the PBS keyword.' 
+                 value='-l walltime=01:00:00;-l nodes=1;-l naccesspolicy=SINGLEJOB -n' width='100%_none'>
+          </param>
+        </when>
+      </conditional>
     </section>
     <section name='geometry' type='section' title='Runtime Parameters' expanded='true'>
       <param name='npart'
