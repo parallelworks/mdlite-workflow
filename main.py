@@ -1,32 +1,27 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Molecular Dynamics Lite workflow
-# This notebook implements a simple molecular dynamics (MD) workflow to demonstrate [Parsl Python parallel scripting](https://parsl-project.org/) in a Jupyter notebook. This workflow first runs MD simulations in parallel on remote resources and then renders the frames of an animation visualizing the simulation according to the schematic below.
-
-# In[ ]:
-
-
-from IPython.display import Image
-Image("images/mdlite-parameter-sweep.png")
-
-
-# ## Step 1: Define workflow inputs
-# This PW workflow can be either launched from its form in the `Compute` tab or it can be run directly in this notebook.  If running directly from the notebook, the user needs to go through the extra step of defining the inputs of the workfow in the notebook.
-
-# In[ ]:
-
-
 import os
 from os.path import exists
-
-print('Define workflow inputs...')
 
 # Start assuming workflow is launched from the form.
 run_in_notebook=False
 
-if (exists("./params.run")):
+if (exists("./resources/input_form_resource_wrapper.log")):
     print("Running from a PW form.")
+
+    # The workflow should get inputs from the form, below.
+    # The proper solution will be to grab the parameter sweep inputs
+    # (a special class of inputs?) and combine them into this
+    # special format.
+    #
+    # For now, just write a params.run:
+    params="npart;input;25:50:25|steps;input;3000:6000:3000|mass;input;0.01:0.02:0.01|trsnaps;input;5:10:5|"
+    print(params)
+   
+    # Write to params.run
+    with open("params.run","w") as f:
+        n_char_written = f.write(params+"\n")
     
 else:
     print("Running from a notebook.")
