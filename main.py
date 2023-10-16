@@ -126,7 +126,7 @@ import parsl_utils
 # concurrent rsyncs from all invocations
 # of this app to finish transfering srcdir.
 @parsl_utils.parsl_wrappers.log_app
-@bash_app(executors=["pwrl_"+resource_labels[0]])
+@bash_app(executors=[resource_labels[0]])
 def md_run(case_definition, inputs=[], outputs=[], stdout='md.run.stdout', stderr='md.run.stderr'):
     return '''
     sleep 10
@@ -149,7 +149,7 @@ def md_run(case_definition, inputs=[], outputs=[], stdout='md.run.stdout', stder
 # approach to zero padding by adding 
 # integers to 1000.
 @parsl_utils.parsl_wrappers.log_app
-@bash_app(executors=["pwrl_"+resource_labels[1]])
+@bash_app(executors=[resource_labels[1]])
 def md_vis(num_frames, inputs=[], outputs=[], stdout='md.vis.stdout', stderr='md.vis.stderr'):
     return '''
     sleep 10
