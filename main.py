@@ -69,7 +69,7 @@ import parsl
 
 # PW essentials
 import parsl_utils
-from parsl_utils.config import config, exec_conf
+from parsl_utils.config import config #NO LONGER NEEDED? , exec_conf
 from parsl_utils.data_provider import PWFile
 
 # For embedding Design Explorer results in notebook
