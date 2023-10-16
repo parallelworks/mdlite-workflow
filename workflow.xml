@@ -10,7 +10,7 @@
            value='/pw/miniconda3' width='50%_none'>
     </param>
     <param name='pw_conda_env' label='PW Conda Environment Name' 
-           type='hidden' value='parsl-1.2' width='50%_none'>
+           type='hidden' value='mdlite' width='50%_none'>
     </param>
     <section name='pwrl_sim_host' 
              type='section' title='Simulation cluster' expanded='true'>
@@ -35,7 +35,7 @@
       </param>
       <param name='worker_conda_env' 
              label='Worker Conda Environment Name' 
-             type='hidden' value='parsl-1.2' width='50%_none'>
+             type='hidden' value='mdlite' width='50%_none'>
       </param>
       <param name='cores_per_worker' 
              label='Cores per Worker' type='integer' min="1" max="100" 
@@ -106,7 +106,7 @@
       </param>
       <param name='worker_conda_env'
              label='Worker Conda Environment Name'
-             type='hidden' value='parsl-1.2' width='50%_none'>
+             type='hidden' value='mdlite' width='50%_none'>
       </param>
       <param name='cores_per_worker'
              label='Cores per Worker' type='integer' min="1" max="100"
