@@ -126,7 +126,7 @@ import parsl_utils
 # concurrent rsyncs from all invocations
 # of this app to finish transfering srcdir.
 @parsl_utils.parsl_wrappers.log_app
-@bash_app(executors=['cluster1'])
+@bash_app(executors=["pwrl_"+resource_labels[0]])
 def md_run(case_definition, inputs=[], outputs=[], stdout='md.run.stdout', stderr='md.run.stderr'):
     return '''
     sleep 10
@@ -149,7 +149,7 @@ def md_run(case_definition, inputs=[], outputs=[], stdout='md.run.stdout', stder
 # approach to zero padding by adding 
 # integers to 1000.
 @parsl_utils.parsl_wrappers.log_app
-@bash_app(executors=['cluster2'])
+@bash_app(executors=["pwrl_"+resource_labels[1]])
 def md_vis(num_frames, inputs=[], outputs=[], stdout='md.vis.stdout', stderr='md.vis.stderr'):
     return '''
     sleep 10
@@ -197,7 +197,7 @@ with open("cases.list","r") as f:
 # and remote working directories for this app here.
 md_run_fut = []
 local_dir = os.getcwd()
-remote_dir = exec_conf["cluster1"]['RUN_DIR']
+remote_dir = exec_conf["pwrl_"+resource_labels[0]]['resource']['workdir']+"/sim"
 
 for ii, case in enumerate(cases_list):
     # Define remote working (sub)dir for this case
@@ -270,7 +270,7 @@ print('Done with simulations.')
 #============================================================================
 md_vis_fut = []
 local_dir = os.getcwd()
-remote_dir = exec_conf["cluster2"]['RUN_DIR']
+remote_dir = exec_conf["pwrl_"+resource_labels[1]]['resource']['workdir']+"/vis"
 
 for ii, case in enumerate(cases_list):
     # Define remote working dir for this case
