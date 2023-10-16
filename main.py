@@ -92,10 +92,7 @@ if (not run_in_notebook):
 
     # Get any command line arguments
     args = read_args()
-    job_number = args['job_number']
-
     print(args)
-    print(job_number)
 
 print("Configuring Parsl...")
 parsl.load(config)
