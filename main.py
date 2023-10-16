@@ -69,7 +69,7 @@ import parsl
 
 # PW essentials
 import parsl_utils
-from parsl_utils.config import config #NO LONGER NEEDED? , exec_conf
+from parsl_utils.config import config, resource_labels, form_inputs #NO LONGER NEEDED? , exec_conf
 from parsl_utils.data_provider import PWFile
 
 # For embedding Design Explorer results in notebook
@@ -93,6 +93,15 @@ if (not run_in_notebook):
     # Get any command line arguments
     args = read_args()
     print(args)
+    
+    # The about should be empty. Instead,
+    # load inputs.json via the form_inputs
+    # and resource_labels indicators
+    print('--------------RESOURCE-LABELS---------------')
+    print(resource_labels)
+    print('----------------FORM-INPUTS-----------------')
+    print(form_inputs)
+    
 
 print("Configuring Parsl...")
 parsl.load(config)
