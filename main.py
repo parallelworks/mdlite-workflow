@@ -197,8 +197,8 @@ with open("cases.list","r") as f:
 # and remote working directories for this app here.
 md_run_fut = []
 local_dir = os.getcwd()
-print(form_inputs["pwrl_"+resource_labels[0]]['resource'])
-remote_dir = form_inputs["pwrl_"+resource_labels[0]]['resource']['jobdir']+"/sim"
+#remote_dir = form_inputs["pwrl_"+resource_labels[0]]['resource']['jobdir']+"/sim"
+remote_dir = config.executors[0].working_dir+"/sim"
 
 for ii, case in enumerate(cases_list):
     # Define remote working (sub)dir for this case
@@ -271,7 +271,8 @@ print('Done with simulations.')
 #============================================================================
 md_vis_fut = []
 local_dir = os.getcwd()
-remote_dir = form_inputs["pwrl_"+resource_labels[1]]['resource']['jobdir']+"/vis"
+#remote_dir = form_inputs["pwrl_"+resource_labels[1]]['resource']['jobdir']+"/vis"
+remote_dir = config.executors[1].working_dir+"/vis"
 
 for ii, case in enumerate(cases_list):
     # Define remote working dir for this case
