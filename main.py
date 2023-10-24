@@ -197,6 +197,7 @@ with open("cases.list","r") as f:
 # and remote working directories for this app here.
 md_run_fut = []
 local_dir = os.getcwd()
+print(form_inputs["pwrl_"+resource_labels[0]]['resource'])
 remote_dir = form_inputs["pwrl_"+resource_labels[0]]['resource']['jobdir']+"/sim"
 
 for ii, case in enumerate(cases_list):
