@@ -1,8 +1,30 @@
-#!/usr/bin/env python
-# coding: utf-8
-
+# Basic dependencies
 import os
 from os.path import exists
+
+# Parsl essentials
+import parsl
+from parsl.app.app import python_app, bash_app
+print(parsl.__version__, flush = True)
+
+# PW essentials
+import parsl_utils
+from parsl_utils.config import config, resource_labels, form_inputs
+from parsl_utils.data_provider import PWFile
+
+# For embedding Design Explorer results in notebook
+from IPython.display import display, HTML
+
+# For making a plot of the results
+import pandas as pd
+import numpy as np
+import glob
+import math
+import matplotlib.pyplot as plt
+
+#==================================================
+# Step 1: Inputs
+#==================================================
 
 # Start assuming workflow is launched from the form.
 run_in_notebook=False
@@ -53,28 +75,6 @@ else:
     # Run the setup stages for parsl_utils
     get_ipython().system('time ./workflow_notebook_setup.sh')
 
-
-# ## Step 2: Configure Parsl
-# The molecular dynamics software itself is a lightweight, precompiled executable written in C. The executable is distributed with this workflow in `./models/mdlite`, and along with input files, it is staged to the remote resources and does not need to be preinstalled.
-# 
-# The core visualization tool used here is a precompiled binary of [c-ray](https://github.com/vkoskiv/c-ray) distributed with this workflow in `./models/c-ray`. The executable is staged to remote resources and does not need to be preinstalled.
-# 
-# In addition to a Miniconda environment containing Parsl, the only other dependency of this workflow is ImageMagick's `convert` tool for image format conversion (`.ppm` to `.png`) and building animated `.gif` files from `.png` frames.
-
-# In[ ]:
-
-
-# Parsl essentials
-import parsl
-
-# PW essentials
-import parsl_utils
-from parsl_utils.config import config, resource_labels, form_inputs #NO LONGER NEEDED? , exec_conf
-from parsl_utils.data_provider import PWFile
-
-# For embedding Design Explorer results in notebook
-from IPython.display import display, HTML
-
 # Gather inputs from the WORKFLOW FORM
 import argparse
 if (not run_in_notebook):
@@ -94,30 +94,59 @@ if (not run_in_notebook):
     args = read_args()
     print(args)
     
-    # The about should be empty. Instead,
+    # The above should be empty. Instead,
     # load inputs.json via the form_inputs
-    # and resource_labels indicators
+    # and resource_labels indicators and
+    # the Parsl config built by parsl_utils.
+    # each of these three data structures
+    # has different and potentialy duplicated
+    # information.
     print('--------------RESOURCE-LABELS---------------')
     print(resource_labels)
     print('----------------FORM-INPUTS-----------------')
     print(form_inputs)
-    
+    print('----------------PARSL-CONFIG----------------')
+    print(config)
+
+#==================================================
+# Step 2: Configure Parsl
+#==================================================
+
+# The molecular dynamics software itself is a lightweight, 
+# precompiled executable written in C. The executable is 
+# distributed with this workflow in `./models/mdlite`, and 
+# along with input files, it is staged to the remote resources 
+# and does not need to be preinstalled.
+# 
+# The core visualization tool used here is a precompiled 
+# binary of [c-ray](https://github.com/vkoskiv/c-ray) distributed 
+# with this workflow in `./models/c-ray`. The executable is 
+# staged to remote resources and does not need to be preinstalled.
+# 
+# In addition to a Miniconda environment containing Parsl, the 
+# only other dependency of this workflow is ImageMagick's 
+# `convert` tool for image format conversion (`.ppm` to 
+# `.png`) and building animated `.gif` files from `.png` frames.
 
 print("Configuring Parsl...")
 parsl.load(config)
 print("Parsl config loaded.")
 
+#==================================================
+# Step 3: Define Parsl workflow apps
+#==================================================
 
-# ## Step 3: Define Parsl workflow apps
-# These apps are decorated with Parsl's `@bash_app` and as such are executed in parallel on the compute resources that are defined in the PW configuration loaded above.  Functions that are **not** decorated are not executed in parallel on remote resources. The files that need to be staged to remote resources will be marked with Parsl's `File()` (or its PW extension, `Path()`) in the workflow.
-
-# In[ ]:
-
+# These apps are decorated with Parsl's `@bash_app` 
+# and as such are executed in parallel on the compute 
+# resources that are defined in the Parsl config 
+# loaded above.  Functions that are **not** decorated 
+# are not executed in parallel on remote resources. 
+#
+# The files that need to be staged to remote resources 
+# will be marked with Parsl's `File()` (or its PW 
+# extension, `PWFile()`) in the workflow.
 
 print("Defining Parsl workflow apps...")
-
-from parsl.app.app import python_app, bash_app
-import parsl_utils
 
 #===================================
 # Molecular dynamics simulation app
@@ -125,6 +154,7 @@ import parsl_utils
 # Sleeps inserted to allow time for
 # concurrent rsyncs from all invocations
 # of this app to finish transfering srcdir.
+
 @parsl_utils.parsl_wrappers.log_app
 @bash_app(executors=[resource_labels[0]])
 def md_run(case_definition, inputs=[], outputs=[], stdout='md.run.stdout', stderr='md.run.stderr'):
@@ -168,16 +198,14 @@ def md_vis(num_frames, inputs=[], outputs=[], stdout='md.vis.stdout', stderr='md
 
 print("Done defining Parsl workflow apps.")
 
+#==================================================
+# Step 4: Workflow
+#==================================================
 
-# ## Step 4: Workflow
 # These cells execute the workflow itself.
-# 
-# ### Molecular dynamics simulation stage
+# First, we have the molecular dynamics simulation.
 
-# In[ ]:
-
-
-print("Running workflow...")
+print("Running simulation...")
 
 #============================================================================
 # SETUP PARAMETER SWEEP
@@ -228,43 +256,13 @@ for ii, case in enumerate(cases_list):
     )
 
 
-# ### Examples for interacting with running Parsl jobs
-
-# In[ ]:
-
-
-#md_run_fut[15].__dict__
-
-
-# In[ ]:
-
-
-#md_run_fut[15].task_def
-
-
-# In[ ]:
-
-
-#config.executors[0].provider.cancel(["0","2","15"])
-
-
-# ### Force workflow to wait for all simulation apps
-
-# In[ ]:
-
-
+# Force workflow to wait for all simulation apps
 # Call results for all app futures to require
 # execution to wait for all simulations to complete.
 for run in md_run_fut:
     run.result()
     
 print('Done with simulations.')
-
-
-# ### Visualization stage
-
-# In[ ]:
-
 
 #============================================================================
 # VISUALIZE
@@ -321,12 +319,11 @@ os.system("./models/mexdex/postprocess.sh mdlite_dex.csv mdlite_dex.html ./")
 
 print('Done with visualizations.')
 
+#============================================================================
+# Step 5: View Results
+#============================================================================
 
-# ## Step 5: View results
 # This step is only necessary when running directly in a notebook. The outputs of this workflow are stored in the `results` folder and they can be interactively visualized with the Design Explorer by clicking on `mdlite_dex.html` which uses `mdlite_dex.csv` and the data in the `results` folder. The Design Explorer visualization is automatically embedded below.
-
-# In[ ]:
-
 
 # Modify width and height to display as wanted
 from IPython.display import IFrame
@@ -339,25 +336,10 @@ designExplorer(
     '/DesignExplorer/index.html?datafile='+nb_cwd+'/mdlite_dex.csv&colorby=kinetic',
     height=600)
 
-
-# ## Step 6: Use notebook to interact directly with simulation results
+#============================================================================
+# Step 6: Use notebook to interact directly with simulation results
+#============================================================================
 # Jupyter notebooks are great because cells can be re-run in isolation as ideas are fine-tuned.  The cell below allows for plotting a new result directly from the simulation outputs; there is no need to re-run the simulation if the plot needs to be modified as the user explores the results.
-
-# In[ ]:
-
-
-# Import needed libraries
-import pandas as pd
-import numpy as np
-import glob
-import math 
-import matplotlib.pyplot as plt
-
-
-# ### Load data and compute statistics
-
-# In[ ]:
-
 
 # All data are in the results/case_* folders.
 list_of_cases = glob.glob("results/case_*")
@@ -406,10 +388,7 @@ for case in list_of_cases:
     all_cases_rt_mean_sq_mean.append(one_case_rt_mean_sq_mean)
 
 
-# ### Plot
-
-# In[ ]:
-
+# Plot
 
 # Plot side by side root mean square std vs. time 
 # and root mean square mean vs. time
@@ -442,13 +421,10 @@ ax0.set_title("Spread of particle swarm",
               fontsize=25)
 ax1.set_title("Centroid of particle swarm",
               fontsize=25)
-
+plt.savefig("mdlite_results.png")
 
 # ## Step 7: Clean up
 # This step is only necessary when running directly in a notebook. These intermediate and log files are removed to keep the workflow file structure clean if this workflow is pushed into the PW Market Place.  Please feel free to comment out these lines in order to inspect intermediate files as needed. The first two, `params.run` and `cases.list` are explicitly created by the workflow in Steps 1 and 4, respectively.  The other files are generated automatically for logging, keeping track of workers, or starting up workers. **Note that even the results are deleted!**
-
-# In[ ]:
-
 
 if (run_in_notebook):
     # Shut down Parsl
@@ -489,10 +465,4 @@ if (run_in_notebook):
     # Delete outputs
     get_ipython().system('rm -rf ./results')
     get_ipython().system('rm -f mdlite_dex.*')
-
-
-# In[ ]:
-
-
-
 
