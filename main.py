@@ -117,7 +117,7 @@ print(params_run_str)
 with open("params.run","w") as f:
     n_char_written = f.write(params_run_str+"\n")
 
-run_in_notebook = false
+run_in_notebook = False
 if (run_in_notebook):
     # If the user clicks on the "Run in Jupyter notebook"
     # toggle switch, skip the workflow code here (the user
