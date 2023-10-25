@@ -1,3 +1,33 @@
+#======================================================
+# MDLite - Lightweight Molecular Dynamics demo workflow
+#======================================================
+
+# The molecular dynamics software itself is a lightweight,
+# precompiled executable written in C. The executable is
+# distributed with this workflow in `./models/mdlite`, and
+# along with input files, it is staged to the remote resources
+# and does not need to be preinstalled.
+# 
+# The core visualization tool used here is a precompiled
+# binary of [c-ray](https://github.com/vkoskiv/c-ray) distributed
+# with this workflow in `./models/c-ray`. The executable is
+# staged to remote resources and does not need to be preinstalled.
+#
+# In addition to a Miniconda environment containing Parsl, the
+# only other dependency of this workflow is ImageMagick's
+# `convert` tool for image format conversion (`.ppm` to
+# `.png`) and building animated `.gif` files from `.png` frames.
+#
+# This workflow is set up to run the similations on one
+# cluster and the visualization on another cluster to demonstrate
+# multi-site workflow functionality. If you specify the same
+# cluster for both tasks, it can run the whole workflow on
+# a single cluster.
+
+#======================================================
+# Dependencies
+#======================================================
+
 # Basic dependencies
 import os
 from os.path import exists
@@ -29,6 +59,9 @@ import matplotlib.pyplot as plt
 # Start assuming workflow is launched from the form.
 run_in_notebook=False
 
+# This will not be a good check since the goal in a 
+# notebook will eventually be to intercept execution 
+# after launch from the form.
 if (exists("./resources/input_form_resource_wrapper.log")):
     print("Running from a PW form.")
 
@@ -75,60 +108,64 @@ else:
     # Run the setup stages for parsl_utils
     get_ipython().system('time ./workflow_notebook_setup.sh')
 
-# Gather inputs from the WORKFLOW FORM
-import argparse
-if (not run_in_notebook):
-    
-    # For reading command line arguments
-    def read_args():
-        parser=argparse.ArgumentParser()
-        parsed, unknown = parser.parse_known_args()
-        for arg in unknown:
-            if arg.startswith(("-", "--")):
-                parser.add_argument(arg)
-        pwargs=vars(parser.parse_args())
-        print(pwargs)
-        return pwargs
+# Gather inputs from the WORKFLOW FORM    
+# The form_inputs, resource_labels, and
+# Parsl config built by parsl_utils are
+# all loaded above with the import statement.
+# Each of these three data structures
+# has different information:
+# 1. resource_labels is a simple list of the 
+#    resource names specified in the workflow
+#    which are used for accessing more details
+#    about each resource in the form_inputs or
+#    Parsl config.
+# 2. form_inputs is a record of the user selected
+#    parameters of the workflow from the 
+#    workflow.xml workflow launch form.  Additional
+#    information is added by the PW platform. 
+#    Some form information is *hidden* in the
+#    workflow.xml and not visible to the user in
+#    the GUI, but it can be modified by editing
+#    the workflow.xml. This approach provides a
+#    way to differentiate between commonly changed
+#    parameters and parameters that rarely change.
+# 3. the Parsl config is build by the PW platform
+#    (specifically the parsl_utils wrapper used to
+#    launch this workflow querying info from the
+#    PW databases via the PW API). Some of this
+#    information is duplicated in the form_inputs,
+#    but it is in a special format needed by Parsl.
+#
+# Print out each of these data structures to see
+# exactly what is contained in each.
 
-    # Get any command line arguments
-    args = read_args()
-    print(args)
-    
-    # The above should be empty. Instead,
-    # load inputs.json via the form_inputs
-    # and resource_labels indicators and
-    # the Parsl config built by parsl_utils.
-    # each of these three data structures
-    # has different and potentialy duplicated
-    # information.
-    print('--------------RESOURCE-LABELS---------------')
-    print(resource_labels)
-    print('----------------FORM-INPUTS-----------------')
-    print(form_inputs)
-    print('----------------PARSL-CONFIG----------------')
-    print(config)
+print('--------------RESOURCE-LABELS---------------')
+print(resource_labels)
+print('----------------FORM-INPUTS-----------------')
+print(form_inputs)
+print('----------------PARSL-CONFIG----------------')
+print(config)
+
+# The main "scientific" workflow parameters (as opposed
+# to all the params necessary to specify compute 
+# resources, etc.) are in the geometry section of the
+# form_inputs. To use the DesignExplorer infrastructure
+# for a parameter sweep, these parameters are assembled 
+# together into a single file, params.run, which will
+# be used to build up the mix-and-match case list.
+
+# Initialize an empty string to append to.
+params_run_str = ''
+
+# Loop over each parameter in the geometry section.
+for param in form_inputs['geometry']:
+    print(param)
 
 #==================================================
 # Step 2: Configure Parsl
 #==================================================
 
-# The molecular dynamics software itself is a lightweight, 
-# precompiled executable written in C. The executable is 
-# distributed with this workflow in `./models/mdlite`, and 
-# along with input files, it is staged to the remote resources 
-# and does not need to be preinstalled.
-# 
-# The core visualization tool used here is a precompiled 
-# binary of [c-ray](https://github.com/vkoskiv/c-ray) distributed 
-# with this workflow in `./models/c-ray`. The executable is 
-# staged to remote resources and does not need to be preinstalled.
-# 
-# In addition to a Miniconda environment containing Parsl, the 
-# only other dependency of this workflow is ImageMagick's 
-# `convert` tool for image format conversion (`.ppm` to 
-# `.png`) and building animated `.gif` files from `.png` frames.
-
-print("Configuring Parsl...")
+print("Loading Parsl config...")
 parsl.load(config)
 print("Parsl config loaded.")
 
