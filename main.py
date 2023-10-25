@@ -121,7 +121,7 @@ with open("params.run","w") as f:
 run_in_notebook = form_inputs['run_in_notebook']
 if (run_in_notebook):
     print('Detected request to run in notebook. Blocking execution in main.py.')
-    print('Please open '+os.pwd+'/main.ipynb to continue.')
+    print('Please open '+os.getcwd()+'/main.ipynb to continue.')
     # If the user clicks on the "Run in Jupyter notebook"
     # toggle switch, skip the workflow code here (the user
     # will run it in the notebook) and wait for the user
