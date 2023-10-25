@@ -117,13 +117,17 @@ print(params_run_str)
 with open("params.run","w") as f:
     n_char_written = f.write(params_run_str+"\n")
 
-run_in_notebook = False
-if (run_in_notebook):
+run_in_notebook = form_inputs['run_in_notebook']
+if (run_in_notebook == "Yes" ):
     # If the user clicks on the "Run in Jupyter notebook"
     # toggle switch, skip the workflow code here (the user
     # will run it in the notebook) and wait for the user
     # to execute the finish cell of the notebook. 
-    print("hello")   
+    iii = 0
+    while iii < 1:
+        if (exists("notebook_done.flag")):
+	    iii = 1
+        sleep(30)
 else:
     # Run workflow here
     
