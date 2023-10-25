@@ -118,7 +118,7 @@ with open("params.run","w") as f:
     n_char_written = f.write(params_run_str+"\n")
 
 run_in_notebook = form_inputs['run_in_notebook']
-if (run_in_notebook == "Yes" ):
+if (run_in_notebook == "True" ):
     # If the user clicks on the "Run in Jupyter notebook"
     # toggle switch, skip the workflow code here (the user
     # will run it in the notebook) and wait for the user
