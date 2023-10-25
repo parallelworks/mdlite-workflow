@@ -123,7 +123,7 @@ if (run_in_notebook):
     # toggle switch, skip the workflow code here (the user
     # will run it in the notebook) and wait for the user
     # to execute the finish cell of the notebook. 
-    
+    print("hello")   
 else:
     # Run workflow here
     
