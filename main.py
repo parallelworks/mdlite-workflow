@@ -118,7 +118,10 @@ with open("params.run","w") as f:
     n_char_written = f.write(params_run_str+"\n")
 
 run_in_notebook = form_inputs['run_in_notebook']
+print(run_in_notebook)
 if (run_in_notebook == "True" ):
+    print('Detected request to run in notebook. Blocking execution in main.py.')
+    print('Please open '+os.pwd+'/main.ipynb to continue.')
     # If the user clicks on the "Run in Jupyter notebook"
     # toggle switch, skip the workflow code here (the user
     # will run it in the notebook) and wait for the user
@@ -128,7 +131,7 @@ if (run_in_notebook == "True" ):
         if (exists("notebook_done.flag")): iii = 1
         sleep(30)
 else:
-    # Run workflow here
+    print("Running workflow directly in main.py...")
     
     #==================================================
     # Step 2: Configure Parsl
