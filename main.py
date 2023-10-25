@@ -125,8 +125,7 @@ if (run_in_notebook == "Yes" ):
     # to execute the finish cell of the notebook. 
     iii = 0
     while iii < 1:
-        if (exists("notebook_done.flag")):
-	    iii = 1
+        if (exists("notebook_done.flag")): iii = 1
         sleep(30)
 else:
     # Run workflow here
