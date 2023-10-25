@@ -117,9 +117,9 @@ print(params_run_str)
 with open("params.run","w") as f:
     n_char_written = f.write(params_run_str+"\n")
 
+# No quotes around this value in form_inputs => it is boolean, not string!
 run_in_notebook = form_inputs['run_in_notebook']
-print(run_in_notebook)
-if (run_in_notebook == "True" ):
+if (run_in_notebook):
     print('Detected request to run in notebook. Blocking execution in main.py.')
     print('Please open '+os.pwd+'/main.ipynb to continue.')
     # If the user clicks on the "Run in Jupyter notebook"
