@@ -71,12 +71,12 @@ if (exists("./resources/input_form_resource_wrapper.log")):
     # special format.
     #
     # For now, just write a params.run:
-    params="npart;input;25:50:25|steps;input;3000:6000:3000|mass;input;0.01:0.02:0.01|trsnaps;input;5:10:5|"
-    print(params)
+    #params="npart;input;25:50:25|steps;input;3000:6000:3000|mass;input;0.01:0.02:0.01|trsnaps;input;5:10:5|"
+    #print(params)
    
     # Write to params.run
-    with open("params.run","w") as f:
-        n_char_written = f.write(params+"\n")
+    #with open("params.run","w") as f:
+    #    n_char_written = f.write(params+"\n")
     
 else:
     print("Running from a notebook.")
@@ -163,6 +163,9 @@ for param in form_inputs['geometry']:
     params_run_str = params_run_str+param+";input;"+form_inputs['geometry'][param]+"|"
 
 print(params_run_str)
+# Write to params.run
+with open("params.run","w") as f:
+    n_char_written = f.write(params_run_str+"\n")
 
 #==================================================
 # Step 2: Configure Parsl
