@@ -160,6 +160,9 @@ params_run_str = ''
 # Loop over each parameter in the geometry section.
 for param in form_inputs['geometry']:
     print(param)
+    params_run_str = params_run_str+param+";input;"+form_inputs['geometry'][param]+"|"
+
+print(params_run_str)
 
 #==================================================
 # Step 2: Configure Parsl
