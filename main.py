@@ -198,7 +198,11 @@ print("Defining Parsl workflow apps...")
 # concurrent rsyncs from all invocations
 # of this app to finish transfering srcdir.
 
-@parsl_utils.parsl_wrappers.log_app
+# This decorator will print out the inputs and
+# outputs (full local path, i.e. path where the
+# parsl script is running) but is not strictly
+# necessary for running the workflow.
+#@parsl_utils.parsl_wrappers.log_app
 @bash_app(executors=[resource_labels[0]])
 def md_run(case_definition, inputs=[], outputs=[], stdout='md.run.stdout', stderr='md.run.stderr'):
     return '''
@@ -221,7 +225,7 @@ def md_run(case_definition, inputs=[], outputs=[], stdout='md.run.stdout', stder
 # This app takes a very simple 
 # approach to zero padding by adding 
 # integers to 1000.
-@parsl_utils.parsl_wrappers.log_app
+#@parsl_utils.parsl_wrappers.log_app
 @bash_app(executors=[resource_labels[1]])
 def md_vis(num_frames, inputs=[], outputs=[], stdout='md.vis.stdout', stderr='md.vis.stderr'):
     return '''
