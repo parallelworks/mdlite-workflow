@@ -166,7 +166,7 @@
       <param name='mass' label='Particle Mass' type='text' value='0.01:0.02:0.01' width='50%' help='Whitespace delimited or range/step (e.g. min:max:step)' argument='input'></param>
       <param name='trsnaps' label='Frames' type='text' value='5' width='50%' help='Whitespace delimited or range/step (e.g. min:max:step)' argument='input'></param>
     </section>
-    <param name='casename' label='Case Name' type='text' value='MD-Lite-Sweep' width='30%_none'></param>
+    <param name='run_in_notebook' label='Run in notebook?' type="boolean" truevalue="Yes" falsevalue="No" checked="False" help='Select Yes to run in a Jupyter notebook.' float="right" width='30%_none'></param>
   </inputs>
   <outputs>
     <data name='csv' format='csv' label='${casename}-CSV'></data>
