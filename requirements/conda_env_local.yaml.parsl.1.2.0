@@ -1,4 +1,3 @@
-name: parsl-1.2
 channels:
   - anaconda
   - defaults
@@ -145,4 +144,4 @@ dependencies:
       - typeguard==2.13.3
       - typing-extensions==4.2.0
       - werkzeug==2.2.2
-prefix: /pw/.miniconda3/envs/parsl-1.2
+
