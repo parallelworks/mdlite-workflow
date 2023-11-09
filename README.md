@@ -19,7 +19,7 @@ between the PW platform and remote resources. Standalone examples without
 
 The workflow is orchestrated with the
 [Parsl parallel scripting library](https://parsl-project.org/) via
-a Jupyter notebook according to the schematic below. ![.](images/mdlite-parameter-sweep.png)
+a Jupyter notebook according to the schematic below. ![.](https://github.com/parallelworks/mdlite-workflow/blob/23684be4f3985019114dfc8e1af1b2bff1727a8a/images/mdlite-parameter-sweep.png)
 
 ## Contents
 
