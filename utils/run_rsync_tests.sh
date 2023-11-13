@@ -11,6 +11,6 @@ do
     #rsync $file $destination:/pw/tmp_sfg/ &
     # Worker node example - need to insert 
     # internal IP of head node with -J!
-    rsync -avzq  -e 'ssh -J 10.3.14.210' $file $destination:/pw/tmp_sfg/ &
+    rsync -avzq  -e 'ssh -J 10.128.0.58' $file $destination:/pw/tmp_sfg/ &
 done
 
