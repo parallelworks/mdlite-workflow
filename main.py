@@ -210,7 +210,13 @@ else:
             indir = inputs[1].local_path,
             outdir = outputs[0].local_path
         )
-     
+    
+    @bash_app(executors=[resource_labels[0], resource_labels[1]])
+    def get_hostname(inputs=[], outputs=[], stdout='get_hostname.stdout', stderr='get_hostname.stderr'):
+        return '''
+        hostname > {hostname_file}
+        '''.format(hostname_file = outputs[0].local_path)
+
     print("Done defining Parsl workflow apps.")
     
     #==================================================
@@ -232,6 +238,18 @@ else:
     with open("cases.list","r") as f:
         cases_list = f.readlines()
     
+    #============================================================================
+    # Get hostname of worker node(s) where apps will run
+    #============================================================================
+    print('Asking for worker node hostname...')
+    get_hostname_fut = get_hostname(
+        outputs = [PWFile(
+            url = 'file://usercontainer/'+local_dir+'/results/got_hostname.txt',
+            local_path = remote_dir+'/got_hostname.txt')])
+
+    print('Result of hostname query is in got_hostname.txt')
+    get_hostname_fut.result()
+
     #============================================================================
     # SIMULATE
     #============================================================================
