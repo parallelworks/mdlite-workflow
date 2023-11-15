@@ -255,6 +255,19 @@ else:
     print('Result of hostname query is in got_hostname.txt')
     get_hostname_fut.result()
 
+    # Wait 2 seconds to ensure that SSH multiplex connection
+    # between worker and head node is complete. Theoretically,
+    # establishing the tunnels should be enforced by realizing 
+    # the future above with .result() but that is not the case
+    # in practice on some systems. Note that this only helps to
+    # solve the SSH multiplex connection setup race condition when
+    # the workflow is restricted to a **single** node if SSH multiplex
+    # connections are happening in the background. (If SSH multiplex
+    # between workers and head node is disabled, then this is not
+    # an issue, but you could still run into limits imposed by MaxSessions
+    # or MaxStartups in /etc/ssh/sshd_config.)
+    sleep(2)
+
     #============================================================================
     # SIMULATE
     #============================================================================
