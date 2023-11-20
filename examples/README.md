@@ -27,6 +27,11 @@ because they are not computationally intense
 and/or they depend on software that may or
 may not be installed on remote resources.
 
+More details for each step follow below. The
+directory `old_parsl_utils` contains files
+relevant for an older version of PW workflow
+launch framework and are unlikely to be useful.
+
 ## Step 1: prepInputs
 
 The PW form will condense its input into a single text file that is stored as `params.run`.

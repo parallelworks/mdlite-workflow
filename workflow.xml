@@ -1,5 +1,5 @@
-<tool id='nyu1_mdlite' name='nyu1_mdlite'>
-  <command interpreter='bash'>workflow_form_launcher.sh</command>
+<tool id='mdlite_id' name='mdlite_name'>
+  <command interpreter='bash'>workflow.sh</command>
   <inputs>
     <param name='pw_conda_yaml' 
            label='PW Conda YAML Definition File' type='hidden' 
@@ -54,19 +54,34 @@
         <when value="SLURM">
           <param name='_parsl_provider_partition' 
                  label='SLURM Partition' type='text' 
-                 help='partition parameter for the Parsl SlurmProvider' value='' width='50%_none'>
+                 help='partition parameter for the Parsl SlurmProvider' 
+                 value='' width='50%_none'>
           </param>
           <param name='_parsl_provider_nodes_per_block' 
                  label='Nodes per Block' type='integer' min="1" max="10" 
-                 help='nodes_per_block parameter for the Parsl SlurmProvider' value='1' width='50%_none'>
+                 help='nodes_per_block parameter for the Parsl SlurmProvider' 
+                 value='1' width='50%_none'>
+          </param>
+          <param name='_parsl_provider_cores_per_node'
+                 label='Cores per Node' type='integer' min="1" max="200"
+                 help='cores_per_node parameter for the Parsl SlurmProvider' 
+                 value='1' width='50%_none'>
+          </param>
+          <param name='_parsl_provider_exclusive'
+                 label='Exclusive node use' type='boolean' 
+                 truevalue="True" falsevalue="False" checked="False" 
+                 help='Select Yes to request exclusive nodes; Parsl SlurmProvider.' 
+                 float="right" width='30%_none'>
           </param>
           <param name='_parsl_provider_walltime' 
-                 label='Walltime' type='text' help='walltime parameter for the Parsl SlurmProvider' 
+                 label='Walltime' 
+                 type='text' help='walltime parameter for the Parsl SlurmProvider' 
                  value='01:00:00' width='50%_none'>
           </param>
           <param name='_parsl_provider_max_blocks' 
                  label='Max Blocks' type='integer' min="1" max="10" 
-                 help='max_blocks parameter for the Parsl SlurmProvider' value='1' width='50%_none'>
+                 help='max_blocks parameter for the Parsl SlurmProvider' 
+                 value='1' width='50%_none'>
           </param>
         </when>
         <when value="PBS">
@@ -89,7 +104,7 @@
              label='Workflow visualization host (cluster name)'
              type='computeResource'
              width='50%_none%'
-             help='Name of cluster to visualize the molecular dynamics simulation. Select a resource from drop down menu.'
+             help='Cluster to visualize simulation results; select from drop down menu.'
              hideUserWorkspace='true'>
       </param>
       <param name='nports'
@@ -125,14 +140,28 @@
         <when value="SLURM">
           <param name='_parsl_provider_partition' 
                  label='SLURM Partition' type='text' 
-                 help='partition parameter for the Parsl SlurmProvider' value='' width='50%_none'>
+                 help='partition parameter for the Parsl SlurmProvider' 
+                 value='' width='50%_none'>
+          </param>
+          <param name='_parsl_provider_cores_per_node'
+                 label='Cores per Node' type='integer' min="1" max="200"
+                 help='cores_per_node parameter for the Parsl SlurmProvider' 
+                 value='1' width='50%_none'>
+          </param>
+          <param name='_parsl_provider_exclusive'
+                 label='Exclusive node use' type='boolean'
+                 truevalue="True" falsevalue="False" checked="False" 
+                 help='Select Yes to request exclusive nodes; Parsl SlurmProvider.'
+                 float="right" width='30%_none'>
           </param>
           <param name='_parsl_provider_nodes_per_block' 
                  label='Nodes per Block' type='integer' min="1" max="10" 
-                 help='nodes_per_block parameter for the Parsl SlurmProvider' value='1' width='50%_none'>
+                 help='nodes_per_block parameter for the Parsl SlurmProvider'
+                 value='1' width='50%_none'>
           </param>
           <param name='_parsl_provider_walltime' 
-                 label='Walltime' type='text' help='walltime parameter for the Parsl SlurmProvider' 
+                 label='Walltime' type='text' 
+                 help='walltime parameter for the Parsl SlurmProvider' 
                  value='01:00:00' width='50%_none'>
           </param>
           <param name='_parsl_provider_max_blocks' 
