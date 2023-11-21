@@ -143,6 +143,11 @@
                  help='partition parameter for the Parsl SlurmProvider' 
                  value='' width='50%_none'>
           </param>
+          <param name='_parsl_provider_nodes_per_block'
+                 label='Nodes per Block' type='integer' min="1" max="10"
+                 help='nodes_per_block parameter for the Parsl SlurmProvider'
+                 value='1' width='50%_none'>
+          </param>
           <param name='_parsl_provider_cores_per_node'
                  label='Cores per Node' type='integer' min="1" max="200"
                  help='cores_per_node parameter for the Parsl SlurmProvider' 
@@ -153,11 +158,6 @@
                  truevalue="True" falsevalue="False" checked="False" 
                  help='Select Yes to request exclusive nodes; Parsl SlurmProvider.'
                  float="right" width='30%_none'>
-          </param>
-          <param name='_parsl_provider_nodes_per_block' 
-                 label='Nodes per Block' type='integer' min="1" max="10" 
-                 help='nodes_per_block parameter for the Parsl SlurmProvider'
-                 value='1' width='50%_none'>
           </param>
           <param name='_parsl_provider_walltime' 
                  label='Walltime' type='text' 
