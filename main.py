@@ -204,6 +204,8 @@ else:
             frame_num_padded=$((1000+$ff))
             {srcdir}/c-ray/renderframe_shared_fs {indir}/md/trj.out {outdir}/f_$frame_num_padded.ppm $ff
         done
+        cd {outdir}
+        convert -delay 10 *.ppm mdlite.gif
         '''.format(
             nf = num_frames,
             srcdir = inputs[0].local_path,
@@ -324,8 +326,9 @@ else:
         vis.result()
         
     # Compile frames into movies locally
-    for ii, case in enumerate(cases_list):
-        os.system("cd ./results/case_"+str(ii)+"/vis; convert -delay 10 *.ppm mdlite.gif")
+    #---> This step has been moved into the visualization app. <---
+    #for ii, case in enumerate(cases_list):
+    #    os.system("cd ./results/case_"+str(ii)+"/vis; convert -delay 10 *.ppm mdlite.gif")
     
     # Compile movies into Design Explorer results locally
     os.system("./models/mexdex/postprocess.sh mdlite_dex.csv mdlite_dex.html ./")
