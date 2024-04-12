@@ -137,14 +137,11 @@
             <option value="SLURM" selected="true">SLURM Partition</option>
             <option value="PBS">PBS Queue</option>
         </param>
-        <when value="SLURM">
+	<when value="SLURM">
           <param name='_parsl_provider_partition' 
-                 label='SLURM Partition' 
-                 type='dynamicPartitionDropdown' 
-                 resource='pwrl_vis_host.resource'
+                 label='SLURM Partition' type='text' optional='true' 
                  help='partition parameter for the Parsl SlurmProvider' 
-                 optional='true'
-                 dependent='false'>
+                 value='' width='50%_none'>
           </param>
           <param name='_parsl_provider_nodes_per_block'
                  label='Nodes per Block' type='integer' min="1" max="10"
