@@ -139,9 +139,12 @@
         </param>
         <when value="SLURM">
           <param name='_parsl_provider_partition' 
-                 label='SLURM Partition' type='text' optional='true' 
+                 label='SLURM Partition' 
+                 type='dynamicPartitionDropdown' 
+                 resource='pwrl_vis_host.resource'
                  help='partition parameter for the Parsl SlurmProvider' 
-                 value='' width='50%_none'>
+                 optional='true'
+                 dependent='false'>
           </param>
           <param name='_parsl_provider_nodes_per_block'
                  label='Nodes per Block' type='integer' min="1" max="10"
